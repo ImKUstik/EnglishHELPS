@@ -2,229 +2,191 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>English is very well</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<title>English is very well — урок английского языка</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Pacifico&family=Caveat:wght@600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Montserrat',sans-serif;overflow:hidden;background:linear-gradient(135deg,#1e3c72 0%,#2a5298 40%,#4a90e2 80%,#6eb6ff 100%);background-size:400% 400%;animation:bg 20s ease infinite;height:100vh;width:100vw;letter-spacing:.2px;color:#fff}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden}
+body{font-family:'Montserrat',sans-serif;background:linear-gradient(135deg,#1e3c72 0%,#2a5298 40%,#4a90e2 80%,#6eb6ff 100%);background-size:400% 400%;animation:bg 20s ease infinite;letter-spacing:.2px;color:#fff;-webkit-font-smoothing:antialiased;position:relative}
 @keyframes bg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-/* ============ ПЛЫВУЩИЕ ОБЛАКА ============ */
 .clouds{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .cloud{position:absolute;background:rgba(255,255,255,.9);border-radius:50%;filter:blur(6px);animation:floatCloud linear infinite;box-shadow:0 0 40px rgba(255,255,255,.5)}
 .cloud::before,.cloud::after{content:'';position:absolute;background:rgba(255,255,255,.9);border-radius:50%}
 .cloud::before{width:60%;height:80%;top:-40%;left:10%}
 .cloud::after{width:50%;height:70%;top:-30%;right:10%}
-@keyframes floatCloud{
-  0%{transform:translateX(-350px) translateY(0) scale(1)}
-  50%{transform:translateX(50vw) translateY(-25px) scale(1.1)}
-  100%{transform:translateX(115vw) translateY(0) scale(1)}
-}
+@keyframes floatCloud{0%{transform:translateX(-350px) translateY(0) scale(1)}50%{transform:translateX(50vw) translateY(-25px) scale(1.1)}100%{transform:translateX(115vw) translateY(0) scale(1)}}
 
-/* ============ СЛАЙДЫ ============ */
-.slide{display:none;position:absolute;inset:0;padding:35px 55px;z-index:10;overflow-y:auto;animation:slideIn .8s cubic-bezier(.2,.9,.3,1.1)}
-.slide.active{display:flex;flex-direction:column;justify-content:center;align-items:center}
-@keyframes slideIn{from{opacity:0;transform:translateY(30px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.progress-top{position:fixed;top:0;left:0;right:0;height:5px;background:rgba(255,255,255,.15);z-index:200}
+.progress-fill{height:100%;background:linear-gradient(90deg,#6eb6ff,#a8e6cf,#ffd166);width:0%;transition:width .5s cubic-bezier(.4,1.3,.6,1);box-shadow:0 0 10px rgba(110,182,255,.8)}
 
-/* ============ ЗАГОЛОВКИ ============ */
-h1{font-family:'Pacifico',cursive;font-size:3.8rem;color:#fff;text-shadow:4px 4px 0 rgba(30,60,114,.7),0 0 30px rgba(110,182,255,.9);text-align:center;margin-bottom:15px;letter-spacing:.5px}
-h2{font-family:'Pacifico',cursive;font-size:2.2rem;color:#fff;text-shadow:3px 3px 0 rgba(30,60,114,.6),0 0 20px rgba(110,182,255,.7);text-align:center;margin-bottom:22px;letter-spacing:.3px;animation:titleSlide .9s cubic-bezier(.4,1.4,.6,1) backwards}
-@keyframes titleSlide{0%{opacity:0;transform:translateY(-40px) scale(.8)}60%{opacity:1;transform:translateY(8px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.sub{font-family:'Caveat',cursive;font-size:1.7rem;color:#fff;text-align:center;margin-bottom:22px;font-weight:600;text-shadow:2px 2px 6px rgba(0,0,0,.5)}
+.slide{display:none;position:absolute;inset:0;padding:25px 30px 100px;z-index:10;overflow-y:auto;-webkit-overflow-scrolling:touch;animation:slideIn .6s cubic-bezier(.2,.9,.3,1.1)}
+.slide.active{display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+@keyframes slideIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
-/* ============ БОКСЫ ============ */
-.box{background:rgba(20,45,90,.75);border-radius:22px;padding:24px;box-shadow:0 12px 40px rgba(0,0,0,.35);max-width:960px;width:100%;border:2px solid rgba(110,182,255,.6);max-height:80vh;overflow-y:auto;backdrop-filter:blur(15px);animation:boxIn .9s cubic-bezier(.3,1.2,.5,1) .15s backwards}
-@keyframes boxIn{0%{opacity:0;transform:translateY(40px) scale(.9)}60%{opacity:1;transform:translateY(-5px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.box::-webkit-scrollbar{width:8px}
-.box::-webkit-scrollbar-thumb{background:rgba(110,182,255,.8);border-radius:10px}
-.box::-webkit-scrollbar-track{background:rgba(255,255,255,.15)}
+h1{font-family:'Pacifico',cursive;font-size:clamp(1.8rem,7vw,3.8rem);color:#fff;text-shadow:3px 3px 0 rgba(30,60,114,.7),0 0 25px rgba(110,182,255,.9);text-align:center;margin-bottom:12px;line-height:1.15;word-wrap:break-word;padding:0 5px}
+h2{font-family:'Pacifico',cursive;font-size:clamp(1.2rem,4.5vw,2.2rem);color:#fff;text-shadow:2px 2px 0 rgba(30,60,114,.6),0 0 18px rgba(110,182,255,.7);text-align:center;margin-bottom:14px;line-height:1.2;word-wrap:break-word;padding:0 5px;animation:titleSlide .8s cubic-bezier(.4,1.4,.6,1) backwards}
+@keyframes titleSlide{0%{opacity:0;transform:translateY(-30px) scale(.85)}60%{opacity:1;transform:translateY(6px) scale(1.04)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.sub{font-family:'Caveat',cursive;font-size:clamp(1rem,3.5vw,1.7rem);color:#fff;text-align:center;margin-bottom:16px;font-weight:600;text-shadow:2px 2px 6px rgba(0,0,0,.5);line-height:1.3;padding:0 5px}
 
-h3{color:#fff;font-size:1.15rem;margin:14px 0 8px;font-weight:800;border-left:4px solid #6eb6ff;padding-left:12px;text-shadow:2px 2px 4px rgba(0,0,0,.4);animation:h3In .6s ease backwards}
-@keyframes h3In{0%{opacity:0;transform:translateX(-25px)}100%{opacity:1;transform:translateX(0)}}
-h4{color:#fff;font-size:1rem;margin:10px 0 6px;font-weight:800;text-shadow:1px 1px 3px rgba(0,0,0,.4)}
+.box{background:rgba(20,45,90,.78);border-radius:18px;padding:18px;box-shadow:0 12px 35px rgba(0,0,0,.35);max-width:1000px;width:100%;border:2px solid rgba(110,182,255,.6);backdrop-filter:blur(12px);animation:boxIn .8s cubic-bezier(.3,1.2,.5,1) .1s backwards;margin-bottom:15px}
+@keyframes boxIn{0%{opacity:0;transform:translateY(30px) scale(.93)}60%{opacity:1;transform:translateY(-4px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
 
-/* ============ ТАБЛИЦЫ ============ */
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.83rem;background:rgba(20,45,90,.6);border-radius:10px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.25);animation:tableIn .7s ease backwards}
-@keyframes tableIn{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
-th{background:linear-gradient(135deg,#4a90e2,#1e3c72);color:#fff;padding:9px 11px;text-align:left;font-weight:700;font-size:.83rem;letter-spacing:.3px;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
-td{padding:8px 11px;border-bottom:1px solid rgba(200,224,255,.25);font-size:.82rem;color:#fff;font-weight:500}
-tr{transition:background .25s}
+h3{color:#fff;font-size:clamp(.95rem,3vw,1.15rem);margin:14px 0 8px;font-weight:800;border-left:4px solid #6eb6ff;padding-left:10px;text-shadow:1px 1px 3px rgba(0,0,0,.4);line-height:1.3}
+h4{color:#fff;font-size:clamp(.85rem,2.8vw,1rem);margin:8px 0 6px;font-weight:800;text-shadow:1px 1px 3px rgba(0,0,0,.4)}
+
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:8px 0;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.table-wrap::-webkit-scrollbar{height:6px}
+.table-wrap::-webkit-scrollbar-thumb{background:rgba(110,182,255,.7);border-radius:10px}
+table{width:100%;border-collapse:collapse;font-size:clamp(.72rem,2.4vw,.85rem);background:rgba(20,45,90,.6);border-radius:10px;overflow:hidden;min-width:420px}
+th{background:linear-gradient(135deg,#4a90e2,#1e3c72);color:#fff;padding:9px 10px;text-align:left;font-weight:700;font-size:.85em;text-shadow:1px 1px 2px rgba(0,0,0,.4);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid rgba(200,224,255,.25);font-size:.85em;color:#fff;font-weight:500;word-wrap:break-word;line-height:1.4}
 tr:hover td{background:rgba(110,182,255,.28)}
 tr:last-child td{border-bottom:none}
 
-/* ============ ПРАВИЛА И ПРИМЕРЫ ============ */
-.rule{background:linear-gradient(135deg,rgba(110,182,255,.35),rgba(30,60,114,.55));border-radius:12px;padding:12px 15px;border-left:5px solid #6eb6ff;margin:10px 0;font-size:.9rem;color:#fff;line-height:1.6;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.2);animation:ruleIn .7s cubic-bezier(.4,1.3,.6,1) backwards}
-@keyframes ruleIn{0%{opacity:0;transform:translateX(-30px)}100%{opacity:1;transform:translateX(0)}}
-.rule b{color:#fff;font-weight:800;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
-.example{background:rgba(110,182,255,.3);border-left:4px solid #6eb6ff;padding:10px 14px;border-radius:10px;margin:8px 0;font-size:.9rem;color:#fff;font-style:italic;font-weight:500;animation:exampleIn .6s ease backwards;box-shadow:0 3px 10px rgba(0,0,0,.15)}
-@keyframes exampleIn{0%{opacity:0;transform:scale(.95)}100%{opacity:1;transform:scale(1)}}
-.translation{color:#c8e0ff;font-size:.8rem;font-style:normal;display:block;margin-top:3px;font-weight:500}
+.rule{background:linear-gradient(135deg,rgba(110,182,255,.35),rgba(30,60,114,.55));border-radius:12px;padding:12px 15px;border-left:5px solid #6eb6ff;margin:10px 0;font-size:clamp(.82rem,2.6vw,.92rem);color:#fff;line-height:1.6;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.2);word-wrap:break-word}
+.rule b{color:#fff;font-weight:800}
+.rule.yellow{background:linear-gradient(135deg,rgba(255,209,102,.35),rgba(230,126,34,.35));border-left-color:#ffd166}
+.rule.green{background:linear-gradient(135deg,rgba(168,230,207,.4),rgba(74,124,89,.4));border-left-color:#a8e6cf}
+.rule.red{background:linear-gradient(135deg,rgba(255,107,107,.35),rgba(192,57,43,.4));border-left-color:#ff6b6b}
 
-/* ============ БЛОК «ЧТО ОБОЗНАЧАЕТ ВРЕМЯ» ============ */
-.time-block{background:linear-gradient(135deg,rgba(110,182,255,.4),rgba(30,60,114,.6));border-radius:14px;padding:16px 18px;margin:12px 0;border:2px solid #6eb6ff;box-shadow:0 6px 20px rgba(0,0,0,.25);animation:timeIn .8s cubic-bezier(.4,1.3,.6,1) backwards}
-@keyframes timeIn{0%{opacity:0;transform:translateY(30px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.time-block .time-name{font-family:'Pacifico',cursive;font-size:1.4rem;color:#fff;margin-bottom:10px;text-shadow:2px 2px 0 rgba(30,60,114,.7),0 0 15px rgba(110,182,255,.8);letter-spacing:.5px}
-.time-block .what-means{background:rgba(255,255,255,.15);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:.92rem;line-height:1.6;font-weight:500;border-left:4px solid #ffd166}
+.time-block{background:linear-gradient(135deg,rgba(110,182,255,.4),rgba(30,60,114,.6));border-radius:14px;padding:15px;margin:10px 0;border:2px solid #6eb6ff;box-shadow:0 6px 20px rgba(0,0,0,.25);word-wrap:break-word}
+.time-block .time-name{font-family:'Pacifico',cursive;font-size:clamp(1.05rem,3.5vw,1.4rem);color:#fff;margin-bottom:10px;text-shadow:2px 2px 0 rgba(30,60,114,.7);letter-spacing:.3px;line-height:1.2}
+.time-block .what-means{background:rgba(255,255,255,.15);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:clamp(.82rem,2.6vw,.92rem);line-height:1.65;font-weight:500;border-left:4px solid #ffd166;word-wrap:break-word}
 .time-block .what-means b{color:#ffd166;font-weight:800}
-.time-block .formula-box{background:rgba(15,35,75,.7);border-radius:10px;padding:10px 14px;margin-bottom:10px;font-size:.9rem;font-weight:700;color:#fff;border:2px dashed #6eb6ff;text-align:center;letter-spacing:.3px}
+.time-block .formula-box{background:rgba(15,35,75,.75);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:clamp(.78rem,2.4vw,.9rem);font-weight:700;color:#fff;border:2px dashed #6eb6ff;text-align:center;line-height:1.7}
 .time-block .formula-box .plus{color:#4ade80;font-weight:800}
 .time-block .formula-box .minus{color:#ff6b6b;font-weight:800}
 .time-block .formula-box .quest{color:#ffd166;font-weight:800}
-.time-block .marker-title{font-size:.9rem;font-weight:800;color:#fff;margin:10px 0 6px;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
-.time-block .markers{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
-.time-block .marker-pill{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;padding:5px 12px;border-radius:20px;font-size:.8rem;font-weight:700;box-shadow:0 3px 10px rgba(74,144,226,.4);transition:transform .25s;animation:pillIn .5s cubic-bezier(.4,1.3,.6,1) backwards}
-@keyframes pillIn{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:scale(1)}}
-.time-block .marker-pill:hover{transform:scale(1.1) translateY(-2px)}
-.time-block .ex-line{font-size:.88rem;color:#fff;padding:6px 0;line-height:1.5;font-style:italic}
+.time-block .marker-title{font-size:clamp(.82rem,2.6vw,.9rem);font-weight:800;color:#fff;margin:10px 0 6px;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
+.time-block .markers{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.time-block .marker-pill{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;padding:5px 11px;border-radius:20px;font-size:clamp(.7rem,2.2vw,.8rem);font-weight:700;box-shadow:0 3px 10px rgba(74,144,226,.4);line-height:1.3}
+.time-block .ex-line{font-size:clamp(.8rem,2.6vw,.88rem);color:#fff;padding:6px 0;line-height:1.5;font-style:italic;word-wrap:break-word}
 .time-block .ex-line b{color:#a8ffb8;font-style:normal;font-weight:700}
-.time-block .ex-line .ru{color:#c8e0ff;font-style:normal;font-size:.8rem}
+.time-block .ex-line .ru{color:#c8e0ff;font-style:normal;font-size:.85em;display:block;margin-top:2px}
 
-/* ============ МИНИ-МЕНЮ РОБОТ ============ */
-.menu-robot{position:fixed;top:20px;right:20px;z-index:1000;cursor:pointer;user-select:none}
-.robot-btn{width:70px;height:70px;background:linear-gradient(135deg,#6eb6ff,#1e3c72);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.2rem;box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 4px rgba(110,182,255,.5);transition:transform .3s,box-shadow .3s;animation:robotFloat 2.5s ease-in-out infinite,robotGlow 2s ease-in-out infinite}
-@keyframes robotFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(5deg)}}
-@keyframes robotGlow{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 0 4px rgba(110,182,255,.5)}50%{box-shadow:0 10px 40px rgba(110,182,255,.8),0 0 0 8px rgba(110,182,255,.3)}}
-.robot-btn:hover{transform:scale(1.15) rotate(-10deg);box-shadow:0 15px 40px rgba(0,0,0,.6),0 0 0 6px rgba(110,182,255,.7)}
-.robot-btn::after{content:'▼';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);font-size:.85rem;color:#fff;text-shadow:0 0 8px #6eb6ff;animation:arrowBounce 1.2s ease-in-out infinite}
-@keyframes arrowBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(5px)}}
+.menu-robot{position:fixed;top:12px;right:12px;z-index:1000;cursor:pointer;user-select:none}
+.robot-btn{width:56px;height:56px;background:linear-gradient(135deg,#6eb6ff,#1e3c72);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 8px 25px rgba(0,0,0,.5),0 0 0 3px rgba(110,182,255,.5);transition:transform .3s,box-shadow .3s;animation:robotFloat 2.5s ease-in-out infinite,robotGlow 2s ease-in-out infinite;position:relative}
+@keyframes robotFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(5deg)}}
+@keyframes robotGlow{0%,100%{box-shadow:0 8px 25px rgba(0,0,0,.5),0 0 0 3px rgba(110,182,255,.5)}50%{box-shadow:0 8px 35px rgba(110,182,255,.8),0 0 0 6px rgba(110,182,255,.3)}}
+.robot-btn:active{transform:scale(.92) rotate(-10deg)}
+.robot-btn::after{content:'▼';position:absolute;bottom:-9px;left:50%;transform:translateX(-50%);font-size:.7rem;color:#fff;text-shadow:0 0 8px #6eb6ff;animation:arrowBounce 1.2s ease-in-out infinite}
+@keyframes arrowBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(4px)}}
 
-.menu-panel{position:absolute;top:80px;right:0;width:310px;max-height:80vh;overflow-y:auto;background:rgba(15,35,75,.98);border-radius:18px;padding:18px;box-shadow:0 20px 60px rgba(0,0,0,.6);border:2px solid #6eb6ff;opacity:0;visibility:hidden;transform:translateY(-20px) scale(.9);transition:all .4s cubic-bezier(.4,1.4,.6,1);backdrop-filter:blur(20px)}
+.menu-panel{position:fixed;top:78px;right:12px;left:auto;width:calc(100vw - 24px);max-width:340px;max-height:calc(100vh - 100px);overflow-y:auto;-webkit-overflow-scrolling:touch;background:rgba(15,35,75,.98);border-radius:16px;padding:14px;box-shadow:0 20px 60px rgba(0,0,0,.7);border:2px solid #6eb6ff;opacity:0;visibility:hidden;transform:translateY(-15px) scale(.9);transition:all .35s cubic-bezier(.4,1.4,.6,1);backdrop-filter:blur(20px);z-index:1001}
 .menu-panel.open{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
-.menu-panel h4{color:#6eb6ff;text-align:center;margin-bottom:12px;font-size:1rem;letter-spacing:2px;text-shadow:0 0 10px rgba(110,182,255,.6)}
-.menu-item{padding:10px 14px;margin-bottom:5px;background:rgba(110,182,255,.15);border-radius:10px;cursor:pointer;font-size:.83rem;font-weight:600;color:#fff;transition:all .3s;border-left:3px solid transparent;display:flex;align-items:center;gap:9px;opacity:0;animation:menuItemIn .5s cubic-bezier(.4,1.3,.6,1) forwards}
-@keyframes menuItemIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-.menu-panel.open .menu-item:nth-child(1){animation-delay:.03s}
-.menu-panel.open .menu-item:nth-child(2){animation-delay:.06s}
-.menu-panel.open .menu-item:nth-child(3){animation-delay:.09s}
-.menu-panel.open .menu-item:nth-child(4){animation-delay:.12s}
-.menu-panel.open .menu-item:nth-child(5){animation-delay:.15s}
-.menu-panel.open .menu-item:nth-child(6){animation-delay:.18s}
-.menu-panel.open .menu-item:nth-child(7){animation-delay:.21s}
-.menu-panel.open .menu-item:nth-child(8){animation-delay:.24s}
-.menu-panel.open .menu-item:nth-child(9){animation-delay:.27s}
-.menu-panel.open .menu-item:nth-child(10){animation-delay:.3s}
-.menu-panel.open .menu-item:nth-child(11){animation-delay:.33s}
-.menu-panel.open .menu-item:nth-child(12){animation-delay:.36s}
-.menu-panel.open .menu-item:nth-child(13){animation-delay:.39s}
-.menu-panel.open .menu-item:nth-child(14){animation-delay:.42s}
-.menu-panel.open .menu-item:nth-child(15){animation-delay:.45s}
-.menu-panel.open .menu-item:nth-child(16){animation-delay:.48s}
-.menu-panel.open .menu-item:nth-child(17){animation-delay:.51s}
-.menu-item:hover{background:linear-gradient(135deg,rgba(110,182,255,.5),rgba(74,144,226,.4));border-left-color:#6eb6ff;transform:translateX(6px);box-shadow:0 5px 15px rgba(110,182,255,.4)}
-.menu-item .ic{font-size:1.2rem}
+.menu-panel h4{color:#6eb6ff;text-align:center;margin-bottom:10px;font-size:clamp(.85rem,2.7vw,.95rem);letter-spacing:2px;font-weight:800}
+.menu-panel::-webkit-scrollbar{width:5px}
+.menu-panel::-webkit-scrollbar-thumb{background:rgba(110,182,255,.6);border-radius:10px}
+.menu-item{padding:10px 12px;margin-bottom:5px;background:rgba(110,182,255,.15);border-radius:10px;cursor:pointer;font-size:clamp(.78rem,2.4vw,.85rem);font-weight:600;color:#fff;transition:all .3s;border-left:3px solid transparent;display:flex;align-items:center;gap:9px;line-height:1.3}
+.menu-item:active{background:linear-gradient(135deg,rgba(110,182,255,.5),rgba(74,144,226,.4));border-left-color:#6eb6ff;transform:translateX(4px)}
+.menu-item .ic{font-size:1.15rem;flex-shrink:0}
 
-/* ============ НАВИГАЦИЯ НИЖНЯЯ ============ */
-.nav{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:100;background:rgba(15,35,75,.92);padding:10px 22px;border-radius:50px;backdrop-filter:blur(12px);box-shadow:0 8px 30px rgba(0,0,0,.5);border:2px solid rgba(110,182,255,.5);animation:navIn 1s cubic-bezier(.4,1.3,.6,1) .5s backwards}
-@keyframes navIn{from{opacity:0;transform:translateX(-50%) translateY(30px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
-.nav button{padding:10px 24px;border:none;border-radius:50px;background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 4px 12px rgba(74,144,226,.5)}
-.nav button:hover{transform:scale(1.1);box-shadow:0 8px 22px rgba(74,144,226,.8)}
-.nav button:active{transform:scale(.95)}
-.cnt{display:flex;align-items:center;color:#fff;font-weight:700;font-size:.9rem;padding:0 8px;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
+.nav{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:100;background:rgba(15,35,75,.94);padding:7px 10px;border-radius:50px;backdrop-filter:blur(12px);box-shadow:0 8px 30px rgba(0,0,0,.5);border:2px solid rgba(110,182,255,.5);align-items:center;max-width:calc(100vw - 20px)}
+.nav button{padding:9px 14px;border:none;border-radius:50px;background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;font-family:'Montserrat',sans-serif;font-size:clamp(.75rem,2.3vw,.85rem);font-weight:700;cursor:pointer;transition:all .25s;box-shadow:0 3px 10px rgba(74,144,226,.5);white-space:nowrap}
+.nav button:active{transform:scale(.94)}
+.cnt{display:flex;align-items:center;color:#fff;font-weight:800;font-size:clamp(.72rem,2.3vw,.85rem);padding:0 4px;white-space:nowrap}
 
-/* ============ СЛАЙД 1 ============ */
-.slide1 h1{opacity:0;animation:titleZoom 1.3s cubic-bezier(.3,1.6,.5,1) .3s forwards}
-@keyframes titleZoom{0%{opacity:0;transform:scale(.2) rotate(-10deg)}55%{opacity:1;transform:scale(1.18) rotate(3deg)}75%{transform:scale(.95) rotate(-1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-.slide1 .sub{opacity:0;animation:fadeUpBig 1.1s .9s forwards}
-@keyframes fadeUpBig{0%{opacity:0;transform:translateY(40px);letter-spacing:10px}100%{opacity:1;transform:translateY(0);letter-spacing:.2px}}
-.slide1 .emoji-big{opacity:0;animation:emojiIn 1.3s 1.4s forwards}
-@keyframes emojiIn{0%{opacity:0;transform:scale(0) rotate(-180deg)}60%{opacity:1;transform:scale(1.3) rotate(20deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-.slide1 .emoji-row{opacity:0;animation:fadeUp 1s 1.8s forwards}
-.emoji-row{font-size:3.5rem;text-align:center;margin-top:20px;letter-spacing:10px}
-.emoji-big{font-size:5.5rem;text-align:center;margin:15px 0;animation:fl 3s ease-in-out infinite}
-@keyframes fl{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-15px) rotate(5deg)}}
+.slide1{justify-content:center !important;padding-bottom:20px}
+.slide1 h1{opacity:0;animation:titleZoom 1.2s cubic-bezier(.3,1.6,.5,1) .3s forwards}
+@keyframes titleZoom{0%{opacity:0;transform:scale(.3) rotate(-8deg)}55%{opacity:1;transform:scale(1.12) rotate(3deg)}75%{transform:scale(.96) rotate(-1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.slide1 .sub{opacity:0;animation:fadeUpBig 1s .9s forwards}
+@keyframes fadeUpBig{0%{opacity:0;transform:translateY(30px);letter-spacing:8px}100%{opacity:1;transform:translateY(0);letter-spacing:.2px}}
+.slide1 .emoji-big{opacity:0;animation:emojiIn 1.2s 1.4s forwards}
+@keyframes emojiIn{0%{opacity:0;transform:scale(0) rotate(-180deg)}60%{opacity:1;transform:scale(1.25) rotate(15deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.emoji-row{font-size:clamp(2rem,7vw,3.5rem);text-align:center;margin-top:15px;letter-spacing:8px;opacity:0;animation:fadeUp 1s 1.8s forwards}
+@keyframes fadeUp{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+.emoji-big{font-size:clamp(3.5rem,12vw,5.5rem);text-align:center;margin:10px 0;animation:fl 3s ease-in-out infinite}
+@keyframes fl{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(5deg)}}
 
-/* ============ КАРТОЧКИ ТЕМ ============ */
-.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:15px}
-.topic{background:linear-gradient(135deg,rgba(110,182,255,.35),rgba(74,144,226,.2));border-radius:14px;padding:16px;text-align:center;cursor:pointer;transition:all .4s cubic-bezier(.4,1.3,.6,1);border:2px solid rgba(110,182,255,.6);font-weight:700;color:#fff;font-size:.9rem;position:relative;overflow:hidden;opacity:0;animation:topicIn .7s cubic-bezier(.4,1.4,.6,1) forwards;text-shadow:1px 1px 3px rgba(0,0,0,.4)}
-.topic:nth-child(1){animation-delay:.1s}.topic:nth-child(2){animation-delay:.15s}.topic:nth-child(3){animation-delay:.2s}.topic:nth-child(4){animation-delay:.25s}.topic:nth-child(5){animation-delay:.3s}.topic:nth-child(6){animation-delay:.35s}.topic:nth-child(7){animation-delay:.4s}.topic:nth-child(8){animation-delay:.45s}.topic:nth-child(9){animation-delay:.5s}.topic:nth-child(10){animation-delay:.55s}.topic:nth-child(11){animation-delay:.6s}.topic:nth-child(12){animation-delay:.65s}.topic:nth-child(13){animation-delay:.7s}.topic:nth-child(14){animation-delay:.75s}
-@keyframes topicIn{from{opacity:0;transform:translateY(40px) scale(.7) rotate(-5deg)}60%{opacity:1;transform:translateY(-8px) scale(1.05) rotate(2deg)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
-.topic:hover{transform:translateY(-8px) scale(1.08);box-shadow:0 15px 40px rgba(74,144,226,.6);border-color:#6eb6ff;background:linear-gradient(135deg,rgba(110,182,255,.6),rgba(74,144,226,.4))}
-.topic::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-100%);transition:transform .9s;pointer-events:none}
-.topic:hover::before{transform:translateX(100%)}
-.topic .icon{font-size:2.2rem;display:block;margin-bottom:6px;transition:transform .3s}
-.topic:hover .icon{transform:scale(1.2) rotate(10deg)}
-
-/* ============ ТРЕНАЖЁР ============ */
-.trainer{background:linear-gradient(135deg,rgba(110,182,255,.3),rgba(30,60,114,.5));border-radius:16px;padding:25px;border:3px solid #6eb6ff;margin-bottom:15px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.3)}
-.trainer .hint-top{font-size:.92rem;color:#fff;margin-bottom:15px;font-weight:600;text-shadow:1px 1px 3px rgba(0,0,0,.4)}
-.trainer .word{font-size:1.5rem;font-weight:700;color:#fff;margin:15px 0;font-family:'Montserrat',sans-serif;line-height:1.5;letter-spacing:.3px;padding:20px;background:rgba(15,35,75,.7);border-radius:12px;border:2px dashed #6eb6ff;min-height:80px;display:flex;align-items:center;justify-content:center;text-shadow:2px 2px 4px rgba(0,0,0,.5);animation:wordIn .6s cubic-bezier(.4,1.3,.6,1) backwards}
-@keyframes wordIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-.trainer input{padding:12px 18px;border:2px solid #6eb6ff;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:1.05rem;width:280px;text-align:center;font-weight:600;color:#1e3c72;background:#fff;transition:all .3s}
-.trainer input:focus{outline:none;border-color:#fff;box-shadow:0 0 25px rgba(110,182,255,.9);transform:scale(1.03)}
-.trainer .feedback{font-size:.95rem;font-weight:600;margin-top:15px;min-height:25px;padding:14px 18px;border-radius:10px;line-height:1.6;text-align:left;text-shadow:none}
-.trainer .feedback.ok{color:#0a3a1a;background:rgba(168,230,207,.95);border-left:4px solid #1a7a2e;display:block;animation:fbIn .5s ease}
-.trainer .feedback.no{color:#5a0e0e;background:rgba(255,200,200,.95);border-left:4px solid #c0392b;display:block;animation:fbIn .5s ease}
-@keyframes fbIn{0%{opacity:0;transform:translateY(-15px) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
-.trainer .feedback b{color:inherit}
-.trainer .feedback .rule-title{font-weight:800;display:block;margin-bottom:6px;font-size:1rem}
-.btn-mini{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;border:none;padding:11px 24px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;margin:5px;transition:all .3s;box-shadow:0 4px 12px rgba(74,144,226,.5)}
-.btn-mini:hover{transform:scale(1.08) translateY(-3px);box-shadow:0 8px 22px rgba(74,144,226,.8)}
-.btn-mini:active{transform:scale(.95)}
+.trainer{background:linear-gradient(135deg,rgba(110,182,255,.3),rgba(30,60,114,.5));border-radius:14px;padding:16px;border:2px solid #6eb6ff;margin-bottom:12px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.trainer .hint-top{font-size:clamp(.8rem,2.5vw,.92rem);color:#fff;margin-bottom:12px;font-weight:600;line-height:1.4}
+.trainer .word{font-size:clamp(1rem,3.3vw,1.5rem);font-weight:700;color:#fff;margin:12px 0;line-height:1.5;padding:15px 12px;background:rgba(15,35,75,.7);border-radius:12px;border:2px dashed #6eb6ff;min-height:70px;display:flex;align-items:center;justify-content:center;word-wrap:break-word}
+.trainer input{padding:12px 15px;border:2px solid #6eb6ff;border-radius:10px;font-family:'Montserrat',sans-serif;font-size:1rem;width:100%;max-width:280px;text-align:center;font-weight:600;color:#1e3c72;background:#fff;-webkit-appearance:none}
+.trainer input:focus{outline:none;border-color:#fff;box-shadow:0 0 20px rgba(110,182,255,.9)}
+.trainer .feedback{font-size:clamp(.78rem,2.5vw,.92rem);font-weight:600;margin-top:12px;padding:12px 14px;border-radius:10px;line-height:1.55;text-align:left;display:none;word-wrap:break-word}
+.trainer .feedback.ok{color:#0a3a1a;background:rgba(168,230,207,.95);border-left:4px solid #1a7a2e;display:block}
+.trainer .feedback.no{color:#5a0e0e;background:rgba(255,200,200,.95);border-left:4px solid #c0392b;display:block}
+.btn-mini{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;border:none;padding:11px 18px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:clamp(.78rem,2.4vw,.9rem);cursor:pointer;margin:4px 3px;transition:all .25s;box-shadow:0 3px 10px rgba(74,144,226,.5);white-space:nowrap}
+.btn-mini:active{transform:scale(.94)}
 .btn-mini.orange{background:linear-gradient(135deg,#ff9a56,#e67e22)}
-.btn-mini.orange:hover{box-shadow:0 8px 22px rgba(230,126,34,.8)}
 .btn-mini.gray{background:linear-gradient(135deg,#7a7a7a,#4a4a4a)}
-.btn-mini.gray:hover{box-shadow:0 8px 22px rgba(100,100,100,.6)}
-.trainer .progress{font-size:.88rem;color:#fff;margin-top:12px;font-weight:600;text-shadow:1px 1px 2px rgba(0,0,0,.4)}
+.trainer .progress{font-size:clamp(.75rem,2.3vw,.88rem);color:#fff;margin-top:10px;font-weight:600}
 
-/* ============ ТЕСТ ============ */
-.quiz-q{background:linear-gradient(135deg,rgba(110,182,255,.2),rgba(30,60,114,.4));border-radius:12px;padding:14px 16px;margin-bottom:12px;border-left:4px solid #6eb6ff;opacity:0;animation:qIn .6s cubic-bezier(.4,1.3,.6,1) forwards;box-shadow:0 4px 15px rgba(0,0,0,.2)}
-@keyframes qIn{0%{opacity:0;transform:translateX(-40px) rotate(-2deg)}60%{opacity:1;transform:translateX(8px) rotate(1deg)}100%{opacity:1;transform:translateX(0) rotate(0)}}
-.quiz-q .num{display:inline-block;background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;font-weight:800;width:26px;height:26px;line-height:26px;text-align:center;border-radius:50%;margin-right:8px;font-size:.82rem;box-shadow:0 4px 10px rgba(74,144,226,.6)}
-.quiz-q .text{font-size:.94rem;color:#fff;font-weight:600;margin-bottom:8px;display:inline;text-shadow:1px 1px 2px rgba(0,0,0,.3)}
-.quiz-q .options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.quiz-q .options label{background:rgba(255,255,255,.15);border:2px solid rgba(110,182,255,.6);padding:8px 15px;border-radius:10px;font-size:.84rem;cursor:pointer;transition:all .3s;font-weight:600;color:#fff;text-shadow:1px 1px 2px rgba(0,0,0,.3)}
-.quiz-q .options label:hover{background:rgba(110,182,255,.4);transform:translateY(-3px) scale(1.03);box-shadow:0 5px 15px rgba(74,144,226,.4)}
+.quiz-q{background:linear-gradient(135deg,rgba(110,182,255,.2),rgba(30,60,114,.4));border-radius:12px;padding:12px 13px;margin-bottom:10px;border-left:4px solid #6eb6ff;box-shadow:0 4px 15px rgba(0,0,0,.2);word-wrap:break-word}
+.quiz-q .num{display:inline-block;background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;font-weight:800;width:24px;height:24px;line-height:24px;text-align:center;border-radius:50%;margin-right:7px;font-size:.78rem;box-shadow:0 3px 8px rgba(74,144,226,.6);vertical-align:middle}
+.quiz-q .text{font-size:clamp(.82rem,2.7vw,.94rem);color:#fff;font-weight:600;margin-bottom:7px;display:inline;vertical-align:middle;line-height:1.4}
+.quiz-q .options{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.quiz-q .options label{background:rgba(255,255,255,.15);border:2px solid rgba(110,182,255,.6);padding:8px 12px;border-radius:10px;font-size:clamp(.75rem,2.4vw,.84rem);cursor:pointer;transition:all .25s;font-weight:600;color:#fff;line-height:1.3}
+.quiz-q .options label:active{transform:scale(.96)}
 .quiz-q .options input{display:none}
-.quiz-q .options input:checked+label{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;border-color:#fff;box-shadow:0 5px 18px rgba(74,144,226,.8);transform:scale(1.05)}
-.quiz-q .result{font-size:.84rem;margin-top:10px;font-weight:600;display:none;padding:10px 14px;border-radius:10px;line-height:1.55;text-shadow:none}
-.quiz-q .result.ok{color:#0a3a1a;display:block;background:rgba(168,230,207,.95);border-left:3px solid #1a7a2e;animation:fbIn .4s ease}
-.quiz-q .result.no{color:#5a0e0e;display:block;background:rgba(255,200,200,.95);border-left:3px solid #c0392b;animation:fbIn .4s ease}
+.quiz-q .options input:checked+label{background:linear-gradient(135deg,#6eb6ff,#4a90e2);color:#fff;border-color:#fff;box-shadow:0 4px 15px rgba(74,144,226,.8)}
+.quiz-q .result{font-size:clamp(.75rem,2.4vw,.84rem);margin-top:8px;font-weight:600;display:none;padding:10px 12px;border-radius:10px;line-height:1.5;word-wrap:break-word}
+.quiz-q .result.ok{color:#0a3a1a;display:block;background:rgba(168,230,207,.95);border-left:3px solid #1a7a2e}
+.quiz-q .result.no{color:#5a0e0e;display:block;background:rgba(255,200,200,.95);border-left:3px solid #c0392b}
 
-.btn-check{background:linear-gradient(135deg,#ff9a56,#e67e22);color:#fff;border:none;padding:13px 32px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:1rem;cursor:pointer;margin:10px 5px 0;transition:all .3s;box-shadow:0 6px 20px rgba(230,126,34,.6)}
-.btn-check:hover{transform:scale(1.08) translateY(-3px);box-shadow:0 10px 30px rgba(230,126,34,.9)}
-.btn-check:active{transform:scale(.96)}
-.btn-check.blue{background:linear-gradient(135deg,#6eb6ff,#4a90e2);box-shadow:0 6px 20px rgba(74,144,226,.6)}
-.btn-check.blue:hover{box-shadow:0 10px 30px rgba(74,144,226,.9)}
-.score{text-align:center;font-size:1.05rem;font-weight:800;color:#fff;margin-top:15px;padding:18px;background:linear-gradient(135deg,rgba(110,182,255,.5),rgba(74,144,226,.4));border-radius:12px;display:none;border:2px solid #6eb6ff;box-shadow:0 8px 25px rgba(0,0,0,.35);text-shadow:1px 1px 3px rgba(0,0,0,.4)}
-.score.show{display:block;animation:scoreIn .9s cubic-bezier(.4,1.5,.6,1)}
-@keyframes scoreIn{0%{opacity:0;transform:scale(.6) rotate(-5deg)}60%{opacity:1;transform:scale(1.1) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+.btn-check{background:linear-gradient(135deg,#ff9a56,#e67e22);color:#fff;border:none;padding:12px 22px;border-radius:50px;font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(.82rem,2.5vw,1rem);cursor:pointer;margin:8px 4px 0;transition:all .25s;box-shadow:0 5px 15px rgba(230,126,34,.6)}
+.btn-check:active{transform:scale(.95)}
+.btn-check.blue{background:linear-gradient(135deg,#6eb6ff,#4a90e2);box-shadow:0 5px 15px rgba(74,144,226,.6)}
+.score{text-align:center;font-size:clamp(.85rem,2.7vw,1.05rem);font-weight:800;color:#fff;margin-top:12px;padding:15px;background:linear-gradient(135deg,rgba(110,182,255,.5),rgba(74,144,226,.4));border-radius:12px;display:none;border:2px solid #6eb6ff;box-shadow:0 8px 25px rgba(0,0,0,.35);word-wrap:break-word;line-height:1.5}
+.score.show{display:block;animation:scoreIn .8s cubic-bezier(.4,1.5,.6,1)}
+@keyframes scoreIn{0%{opacity:0;transform:scale(.7) rotate(-3deg)}60%{opacity:1;transform:scale(1.05) rotate(1deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
 
-@media (max-width:768px){
-  h1{font-size:2.3rem}
-  h2{font-size:1.5rem}
-  .slide{padding:20px 25px}
-  .robot-btn{width:55px;height:55px;font-size:1.7rem}
-  .menu-panel{width:250px}
-  .nav{padding:8px 14px}
-  .nav button{padding:8px 16px;font-size:.8rem}
+.fact-card{background:linear-gradient(135deg,rgba(255,209,102,.3),rgba(230,126,34,.3));border-radius:12px;padding:12px 14px;border-left:5px solid #ffd166;margin:8px 0;font-size:clamp(.82rem,2.6vw,.9rem);color:#fff;line-height:1.55;font-weight:500;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.fact-card b{color:#ffd166;font-weight:800}
+.fact-card .fact-icon{font-size:1.3rem;margin-right:6px;vertical-align:middle}
+
+@media (min-width:769px){
+  .slide{padding:35px 55px 100px}
+  .box{padding:24px;border-radius:22px}
+  .menu-robot{top:20px;right:20px}
+  .robot-btn{width:70px;height:70px;font-size:2.2rem}
+  .menu-panel{top:90px;right:20px;width:340px;max-height:80vh}
+  .menu-item:hover{background:linear-gradient(135deg,rgba(110,182,255,.5),rgba(74,144,226,.4));border-left-color:#6eb6ff;transform:translateX(6px);box-shadow:0 5px 15px rgba(110,182,255,.4)}
+  .nav{padding:10px 22px;gap:12px}
+  .nav button{padding:10px 24px}
+  .nav button:hover{transform:scale(1.08)}
+}
+@media (max-width:380px){
+  .slide{padding:15px 15px 95px}
+  .box{padding:12px;border-radius:14px}
+  .nav button{padding:8px 12px}
+  .menu-panel{width:calc(100vw - 20px);right:10px}
+  .robot-btn{width:50px;height:50px;font-size:1.5rem}
 }
 </style>
 </head>
 <body>
 
+<div class="progress-top"><div class="progress-fill" id="progressFill"></div></div>
 <div class="clouds" id="clouds"></div>
 
-<!-- ============ МИНИ-МЕНЮ РОБОТ ============ -->
+<!-- ============ МЕНЮ РОБОТ ============ -->
 <div class="menu-robot">
   <div class="robot-btn" onclick="toggleMenu()">🤖</div>
   <div class="menu-panel" id="menuPanel">
-    <h4>📚 ТЕМЫ</h4>
-    <div class="menu-item" onclick="goTo(1)"><span class="ic">👤</span>Местоимения</div>
-    <div class="menu-item" onclick="goTo(2)"><span class="ic">📦</span>Существительные</div>
-    <div class="menu-item" onclick="goTo(3)"><span class="ic">⚡</span>Глагол to be</div>
-    <div class="menu-item" onclick="goTo(4)"><span class="ic">🔧</span>Модальные глаголы</div>
-    <div class="menu-item" onclick="goTo(5)"><span class="ic">✅</span>Present Simple</div>
-    <div class="menu-item" onclick="goTo(6)"><span class="ic">⏳</span>Present Continuous</div>
-    <div class="menu-item" onclick="goTo(7)"><span class="ic">💯</span>Present Perfect</div>
-    <div class="menu-item" onclick="goTo(8)"><span class="ic">⏪</span>Past Simple</div>
-    <div class="menu-item" onclick="goTo(9)"><span class="ic">⏮️</span>Past Continuous</div>
-    <div class="menu-item" onclick="goTo(10)"><span class="ic">📜</span>Past Perfect</div>
-    <div class="menu-item" onclick="goTo(11)"><span class="ic">🚀</span>Future Simple</div>
-    <div class="menu-item" onclick="goTo(12)"><span class="ic">🔮</span>Future Continuous</div>
-    <div class="menu-item" onclick="goTo(13)"><span class="ic">📋</span>Неправильные глаголы</div>
-    <div class="menu-item" onclick="goTo(14)"><span class="ic">🎯</span>Маркеры времён</div>
-    <div class="menu-item" onclick="goTo(15)"><span class="ic">🎮</span>Тренажёр</div>
-    <div class="menu-item" onclick="goTo(16)"><span class="ic">🧪</span>Тест</div>
+    <h4>📚 СОДЕРЖАНИЕ</h4>
+    <div class="menu-item" onclick="goTo(1)"><span class="ic">📖</span>Что такое время</div>
+    <div class="menu-item" onclick="goTo(2)"><span class="ic">👤</span>Местоимения</div>
+    <div class="menu-item" onclick="goTo(3)"><span class="ic">📦</span>Существительные</div>
+    <div class="menu-item" onclick="goTo(4)"><span class="ic">⚡</span>Глагол to be</div>
+    <div class="menu-item" onclick="goTo(5)"><span class="ic">🔧</span>Модальные глаголы</div>
+    <div class="menu-item" onclick="goTo(6)"><span class="ic">✅</span>Present Simple</div>
+    <div class="menu-item" onclick="goTo(7)"><span class="ic">⏳</span>Present Continuous</div>
+    <div class="menu-item" onclick="goTo(8)"><span class="ic">💯</span>Present Perfect</div>
+    <div class="menu-item" onclick="goTo(9)"><span class="ic">⏪</span>Past Simple</div>
+    <div class="menu-item" onclick="goTo(10)"><span class="ic">⏮️</span>Past Continuous</div>
+    <div class="menu-item" onclick="goTo(11)"><span class="ic">📜</span>Past Perfect</div>
+    <div class="menu-item" onclick="goTo(12)"><span class="ic">🚀</span>Future Simple</div>
+    <div class="menu-item" onclick="goTo(13)"><span class="ic">🔮</span>Future Continuous</div>
+    <div class="menu-item" onclick="goTo(14)"><span class="ic">🔀</span>Сравнение времён</div>
+    <div class="menu-item" onclick="goTo(15)"><span class="ic">📋</span>Неправильные глаголы</div>
+    <div class="menu-item" onclick="goTo(16)"><span class="ic">🎯</span>Маркеры времён</div>
+    <div class="menu-item" onclick="goTo(17)"><span class="ic">⚠️</span>Частые ошибки</div>
+    <div class="menu-item" onclick="goTo(18)"><span class="ic">📚</span>Как учить времена</div>
+    <div class="menu-item" onclick="goTo(19)"><span class="ic">🎮</span>Тренажёр</div>
+    <div class="menu-item" onclick="goTo(20)"><span class="ic">🧪</span>Тест</div>
   </div>
 </div>
 
@@ -233,14 +195,54 @@ tr:last-child td{border-bottom:none}
 <h1>English is very well</h1>
 <div class="sub">Всё, что нужно знать в 6 классе</div>
 <div class="emoji-big">📚</div>
-<div class="emoji-row">✨ 💙 ⭐ 📖 ✏️</div>
+<div class="emoji-row">✨ 💙 ⭐</div>
 </div>
 
-<!-- ============ СЛАЙД 2 — МЕСТОИМЕНИЯ ============ -->
+<!-- ============ СЛАЙД 2 — ЧТО ТАКОЕ ВРЕМЯ ============ -->
+<div class="slide">
+<h2>📖 Что такое время глагола?</h2>
+<div class="box">
+<div class="rule green">💡 <b>Время глагола</b> — это форма глагола, которая показывает, <b>когда</b> происходит действие: в прошлом, настоящем или будущем.</div>
+
+<h3>🕐 Три основных времени в английском:</h3>
+<div class="time-block">
+<div class="time-name">1. Настоящее (Present)</div>
+<div class="what-means">Действие происходит <b>сейчас</b> или <b>регулярно</b>. Например: «Я читаю книгу», «Он ходит в школу каждый день».</div>
+</div>
+<div class="time-block">
+<div class="time-name">2. Прошедшее (Past)</div>
+<div class="what-means">Действие <b>уже произошло</b>. Например: «Я читал вчера», «Он ходил в школу в прошлом году».</div>
+</div>
+<div class="time-block">
+<div class="time-name">3. Будущее (Future)</div>
+<div class="what-means">Действие <b>ещё будет</b>. Например: «Я буду читать завтра», «Он пойдёт в школу в следующем году».</div>
+</div>
+
+<h3>📊 Сколько всего времён?</h3>
+<div class="rule yellow">В английском языке <b>12 времён</b> (4 группы × 3 времени). Но в 6 классе изучают <b>8 основных</b> — их мы и разберём.</div>
+
+<h3>🎯 Как определить время?</h3>
+<table>
+<tr><th>Что важно</th><th>Пример</th></tr>
+<tr><td><b>Когда</b> происходит действие?</td><td>сейчас / вчера / завтра</td></tr>
+<tr><td><b>Как долго</b> оно длится?</td><td>один раз / постоянно / уже закончилось</td></tr>
+<tr><td><b>Есть ли результат</b> сейчас?</td><td>важен результат — Present Perfect</td></tr>
+</table>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> в русском языке всего <b>3 времени</b> — прошлое, настоящее, будущее. А в английском — 12! Поэтому у нас так много форм глаголов.</div>
+
+<div class="rule red">⚠️ <b>Запомни главное:</b> время глагола определяется по <b>словам-маркерам</b> (yesterday, now, already) и по <b>смыслу предложения</b>.</div>
+</div>
+</div>
+
+<!-- ============ СЛАЙД 3 — МЕСТОИМЕНИЯ ============ -->
 <div class="slide">
 <h2>👤 Местоимения (Pronouns)</h2>
 <div class="box">
+<div class="rule green">💡 <b>Местоимение</b> — это слово, которое заменяет существительное. Вместо «Маша» говорим «она», вместо «книга» — «она».</div>
+
 <h3>Личные местоимения</h3>
+<div class="table-wrap">
 <table>
 <tr><th>Именительный</th><th>Перевод</th><th>Объектный</th><th>Перевод</th></tr>
 <tr><td><b>I</b></td><td>я</td><td><b>me</b></td><td>меня, мне</td></tr>
@@ -251,8 +253,11 @@ tr:last-child td{border-bottom:none}
 <tr><td><b>we</b></td><td>мы</td><td><b>us</b></td><td>нас, нам</td></tr>
 <tr><td><b>they</b></td><td>они</td><td><b>them</b></td><td>их, им</td></tr>
 </table>
-<div class="rule">💡 <b>Именительный</b> — кто делает (подлежащее): <b>I</b> read.<br><b>Объектный</b> — на кого направлено: Give <b>me</b>.</div>
-<h3>Притяжательные</h3>
+</div>
+<div class="rule">💡 <b>Именительный</b> — кто делает (подлежащее): <b>I</b> read — Я читаю.<br><b>Объектный</b> — на кого направлено: Give <b>me</b> — Дай мне.</div>
+
+<h3>Притяжательные местоимения</h3>
+<div class="table-wrap">
 <table>
 <tr><th>+ существительное</th><th>Без существительного</th><th>Перевод</th></tr>
 <tr><td><b>my</b> book</td><td>It's <b>mine</b></td><td>моя книга / это моё</td></tr>
@@ -262,29 +267,48 @@ tr:last-child td{border-bottom:none}
 <tr><td><b>our</b> book</td><td>It's <b>ours</b></td><td>наша / это наше</td></tr>
 <tr><td><b>their</b> book</td><td>It's <b>theirs</b></td><td>их</td></tr>
 </table>
+</div>
+
 <h3>Указательные и возвратные</h3>
+<div class="table-wrap">
 <table>
+<tr><th>Местоимение</th><th>Перевод</th></tr>
 <tr><td>this / these</td><td>этот / эти (близко)</td></tr>
 <tr><td>that / those</td><td>тот / те (далеко)</td></tr>
 <tr><td>myself / yourself</td><td>я сам / ты сам</td></tr>
 <tr><td>himself / herself / itself</td><td>он сам / она сама / оно само</td></tr>
+<tr><td>ourselves / yourselves / themselves</td><td>мы сами / вы сами / они сами</td></tr>
 </table>
+</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> местоимение <b>you</b> в английском означает и «ты», и «вы». Никакого отдельного «вы» нет — это упрощает речь!</div>
+
+<div class="rule yellow">📝 <b>Примеры в предложениях:</b><br>
+<b>I</b> love <b>my</b> family. — Я люблю свою семью.<br>
+<b>She</b> gave <b>me</b> <b>her</b> book. — Она дала мне свою книгу.<br>
+<b>They</b> help <b>us</b> with <b>our</b> homework. — Они помогают нам с нашей домашкой.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 3 — СУЩЕСТВИТЕЛЬНЫЕ ============ -->
+<!-- ============ СЛАЙД 4 — СУЩЕСТВИТЕЛЬНЫЕ ============ -->
 <div class="slide">
 <h2>📦 Существительные (Nouns)</h2>
 <div class="box">
+<div class="rule green">💡 <b>Существительное</b> — это слово, которое обозначает предмет, человека, животное или явление. Отвечает на вопросы «кто?» и «что?».</div>
+
 <h3>Множественное число</h3>
+<div class="table-wrap">
 <table>
 <tr><th>Правило</th><th>Пример</th><th>Перевод</th></tr>
-<tr><td>+ <b>s</b></td><td>cat → cats</td><td>кот → коты</td></tr>
+<tr><td>+ <b>s</b> (обычно)</td><td>cat → cats</td><td>кот → коты</td></tr>
 <tr><td>+ <b>es</b> (после -s, -x, -ch, -sh)</td><td>box → boxes</td><td>коробка → коробки</td></tr>
-<tr><td>-y → <b>-ies</b></td><td>baby → babies</td><td>малыш → малыши</td></tr>
+<tr><td>-y → <b>-ies</b> (после согл.)</td><td>baby → babies</td><td>малыш → малыши</td></tr>
 <tr><td>-f/-fe → <b>-ves</b></td><td>knife → knives</td><td>нож → ножи</td></tr>
 </table>
-<h3>⚠️ Исключения — учить!</h3>
+</div>
+
+<h3>⚠️ Исключения — учить наизусть!</h3>
+<div class="table-wrap">
 <table>
 <tr><th>Ед. число</th><th>Мн. число</th><th>Перевод</th></tr>
 <tr><td>man</td><td><b>men</b></td><td>мужчина</td></tr>
@@ -297,74 +321,130 @@ tr:last-child td{border-bottom:none}
 <tr><td>fish</td><td><b>fish</b></td><td>рыба</td></tr>
 <tr><td>sheep</td><td><b>sheep</b></td><td>овца</td></tr>
 </table>
+</div>
+
 <h3>Артикли</h3>
+<div class="table-wrap">
 <table>
-<tr><th>Артикль</th><th>Когда</th><th>Пример</th></tr>
-<tr><td><b>a</b> (перед согл.)</td><td>Один из многих</td><td>a cat</td></tr>
-<tr><td><b>an</b> (перед гласной)</td><td>Один из многих</td><td>an apple</td></tr>
-<tr><td><b>the</b></td><td>Конкретный</td><td>the cat on the roof</td></tr>
+<tr><th>Артикль</th><th>Когда используется</th><th>Пример</th></tr>
+<tr><td><b>a</b> (перед согл.)</td><td>Один из многих, впервые упоминаем</td><td>a cat — (какая-то) кошка</td></tr>
+<tr><td><b>an</b> (перед гласной)</td><td>Один из многих</td><td>an apple — (какое-то) яблоко</td></tr>
+<tr><td><b>the</b></td><td>Конкретный, уже известный</td><td>the cat on the roof — та самая кошка</td></tr>
+<tr><td><b>без артикля</b></td><td>Имена, неисчисляемые, мн. число в общем смысле</td><td>I like cats. Water is life.</td></tr>
 </table>
-<div class="rule">💡 Впервые упоминаем → <b>a/an</b>. Повторно → <b>the</b>.</div>
+</div>
+
+<div class="rule">💡 Впервые упоминаем → <b>a/an</b>. Повторно → <b>the</b>.<br>
+I see <b>a</b> cat. <b>The</b> cat is black.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> в английском <b>нет падежей</b> как в русском! Поэтому учить существительные легче. Но есть <b>артикли</b> (a / an / the), которых в русском нет совсем.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 4 — TO BE ============ -->
+<!-- ============ СЛАЙД 5 — TO BE ============ -->
 <div class="slide">
 <h2>⚡ Глагол TO BE (быть)</h2>
 <div class="box">
-<h3>Настоящее время</h3>
+<div class="rule green">💡 <b>To be</b> — самый главный глагол английского. Переводится как «быть, есть, находиться». В русском мы его <b>опускаем</b>, а в английском — <b>обязательно ставим</b>!</div>
+
+<div class="rule yellow">📝 <b>Сравни:</b><br>
+🇷🇺 Я студент. (без глагола)<br>
+🇬🇧 I <b>am</b> a student. (глагол нужен!)</div>
+
+<h3>Настоящее время (Present)</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Местоимение</th><th>Форма</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td>I</td><td><b>am</b></td><td>I <b>am</b> a student.</td><td>Я студент.</td></tr>
+<tr><td>you</td><td><b>are</b></td><td>You <b>are</b> my friend.</td><td>Ты мой друг.</td></tr>
+<tr><td>he / she / it</td><td><b>is</b></td><td>She <b>is</b> happy.</td><td>Она счастлива.</td></tr>
+<tr><td>we / they</td><td><b>are</b></td><td>We <b>are</b> at school.</td><td>Мы в школе.</td></tr>
+</table>
+</div>
+<div class="rule">🎯 <b>Запомни:</b> I → <b>am</b>, he/she/it → <b>is</b>, все остальные → <b>are</b>.</div>
+
+<h3>Прошедшее время (Past)</h3>
+<div class="table-wrap">
 <table>
 <tr><th>Местоимение</th><th>Форма</th><th>Пример</th></tr>
-<tr><td>I</td><td><b>am</b></td><td>I <b>am</b> a student.</td></tr>
-<tr><td>you</td><td><b>are</b></td><td>You <b>are</b> my friend.</td></tr>
-<tr><td>he / she / it</td><td><b>is</b></td><td>She <b>is</b> happy.</td></tr>
-<tr><td>we / they</td><td><b>are</b></td><td>We <b>are</b> at school.</td></tr>
-</table>
-<h3>Прошедшее время</h3>
-<table>
 <tr><td>I / he / she / it</td><td><b>was</b></td><td>I <b>was</b> at home.</td></tr>
 <tr><td>you / we / they</td><td><b>were</b></td><td>We <b>were</b> happy.</td></tr>
 </table>
+</div>
+<div class="rule">🎯 <b>Запомни:</b> I/he/she/it → <b>was</b>, you/we/they → <b>were</b>.</div>
+
 <h3>Отрицание и вопрос</h3>
+<div class="table-wrap">
 <table>
-<tr><td>Отрицание</td><td>to be + not</td><td>I <b>am not</b> tired.</td></tr>
-<tr><td>Вопрос</td><td>to be перед подлежащим</td><td><b>Are</b> you ready?</td></tr>
+<tr><th>Тип</th><th>Формула</th><th>Пример</th></tr>
+<tr><td>Отрицание</td><td>to be + not</td><td>I <b>am not</b> tired. She <b>isn't</b> here.</td></tr>
+<tr><td>Вопрос</td><td>to be перед подлежащим</td><td><b>Are</b> you ready? <b>Is</b> he your brother?</td></tr>
 </table>
+</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> глагол <b>to be</b> — самый неправильный глагол в английском! У него больше всего форм: am, is, are, was, were, been, being.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 5 — МОДАЛЬНЫЕ ============ -->
+<!-- ============ СЛАЙД 6 — МОДАЛЬНЫЕ ============ -->
 <div class="slide">
 <h2>🔧 Модальные глаголы</h2>
 <div class="box">
-<div class="rule">💡 После модальных — <b>без to и без s</b>: I can <b>swim</b>. He must <b>go</b>.</div>
+<div class="rule green">💡 <b>Модальные глаголы</b> — это особые глаголы, которые показывают <b>отношение</b> к действию: могу, должен, следует, возможно. Они не изменяются и не требуют окончаний.</div>
+
+<div class="rule yellow">⚠️ <b>Главное правило:</b> после модальных глаголов <b>НЕТ частицы TO</b> и <b>НЕТ окончания -S</b>:<br>
+✅ I can <b>swim</b>. He must <b>go</b>.<br>
+❌ I can <b>to swim</b>. He must <b>goes</b>.</div>
+
+<h3>Самые важные модальные глаголы</h3>
+<div class="table-wrap">
 <table>
-<tr><th>Глагол</th><th>Перевод</th><th>Пример</th></tr>
-<tr><td><b>can</b></td><td>мочь, уметь</td><td>I <b>can</b> swim.</td></tr>
-<tr><td><b>must</b></td><td>должен</td><td>You <b>must</b> go.</td></tr>
-<tr><td><b>should</b></td><td>следует</td><td>You <b>should</b> sleep.</td></tr>
-<tr><td><b>may</b></td><td>можно, возможно</td><td>You <b>may</b> come.</td></tr>
-<tr><td><b>might</b></td><td>возможно</td><td>It <b>might</b> rain.</td></tr>
-<tr><td><b>have to</b></td><td>вынужден</td><td>I <b>have to</b> go.</td></tr>
+<tr><th>Глагол</th><th>Перевод</th><th>Пример</th><th>Перевод</th></tr>
+<tr><td><b>can</b></td><td>мочь, уметь</td><td>I <b>can</b> swim.</td><td>Я умею плавать.</td></tr>
+<tr><td><b>must</b></td><td>должен</td><td>You <b>must</b> go.</td><td>Ты должен идти.</td></tr>
+<tr><td><b>should</b></td><td>следует (совет)</td><td>You <b>should</b> sleep.</td><td>Тебе следует спать.</td></tr>
+<tr><td><b>may</b></td><td>можно, возможно</td><td>You <b>may</b> come.</td><td>Ты можешь прийти.</td></tr>
+<tr><td><b>might</b></td><td>возможно</td><td>It <b>might</b> rain.</td><td>Возможно, будет дождь.</td></tr>
+<tr><td><b>have to</b></td><td>вынужден</td><td>I <b>have to</b> go.</td><td>Я вынужден идти.</td></tr>
 </table>
+</div>
+
+<h3>Отрицательные формы</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Форма</th><th>Значение</th><th>Пример</th></tr>
+<tr><td>cannot / can't</td><td>не могу</td><td>I <b>can't</b> swim.</td></tr>
+<tr><td>mustn't</td><td>нельзя (запрещено)</td><td>You <b>mustn't</b> smoke.</td></tr>
+<tr><td>shouldn't</td><td>не следует</td><td>You <b>shouldn't</b> eat sweets.</td></tr>
+<tr><td>don't have to</td><td>не обязан (не нужно)</td><td>You <b>don't have to</b> go.</td></tr>
+</table>
+</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> разница между <b>mustn't</b> и <b>don't have to</b> огромная!<br>
+<b>mustn't</b> — <b>запрещено</b> (нельзя делать).<br>
+<b>don't have to</b> — <b>не обязательно</b> (можешь, но не обязан).</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 6 — PRESENT SIMPLE ============ -->
+<!-- ============ СЛАЙД 7 — PRESENT SIMPLE ============ -->
 <div class="slide">
 <h2>✅ Present Simple — простое настоящее</h2>
 <div class="box">
 <div class="time-block">
 <div class="time-name">✅ Present Simple</div>
 <div class="what-means">
-<b>Что обозначает:</b> действие, которое происходит <b>постоянно, регулярно, всегда</b>. Это факты, привычки, распорядок дня. Например: «Я хожу в школу каждый день», «Он любит яблоки», «Солнце встаёт на востоке».<br><br>
-<b>Проще говоря:</b> то, что происходит <b>обычно</b> — не прямо сейчас, а вообще, всегда, регулярно.
+<b>Что обозначает:</b> действие, которое происходит <b>постоянно, регулярно, всегда</b>. Это факты, привычки, распорядок дня, расписание.<br><br>
+<b>Проще говоря:</b> то, что происходит <b>обычно</b> — не прямо сейчас, а вообще, всегда, регулярно.<br><br>
+<b>Примеры на русском:</b> «Я хожу в школу каждый день», «Он любит яблоки», «Солнце встаёт на востоке», «Мой папа работает в офисе».
 </div>
 <div class="formula-box">
+<b>Утверждение:</b><br>
 <span class="plus">+</span> I / You / We / They <b>play</b><br>
-<span class="plus">+</span> He / She / It <b>plays</b> (добавляем -s!)<br>
+<span class="plus">+</span> He / She / It <b>plays</b> (добавляем -s!)<br><br>
+<b>Отрицание:</b><br>
 <span class="minus">−</span> I / You / We / They <b>don't play</b><br>
-<span class="minus">−</span> He / She / It <b>doesn't play</b><br>
+<span class="minus">−</span> He / She / It <b>doesn't play</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Do</b> I play? / <b>Does</b> he play?
 </div>
 <div class="marker-title">🎯 Маркеры (слова-подсказки):</div>
@@ -383,11 +463,15 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">He <b>doesn't watch</b> TV. <span class="ru">— Он не смотрит телевизор (вообще).</span></div>
 <div class="ex-line"><b>Do</b> you <b>play</b> football? <span class="ru">— Ты играешь в футбол?</span></div>
 </div>
-<div class="rule">⚠️ <b>Важно!</b> Если подлежащее <b>he / she / it</b> — к глаголу добавляем <b>-s</b> или <b>-es</b>: play → play<b>s</b>, go → go<b>es</b>, watch → watch<b>es</b>.</div>
+
+<div class="rule yellow">⚠️ <b>Самое важное правило:</b> если подлежащее <b>he / she / it</b> — к глаголу добавляем <b>-s</b> или <b>-es</b>:<br>
+play → play<b>s</b>, go → go<b>es</b>, watch → watch<b>es</b>, study → stud<b>ies</b>.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Present Simple — самое частое время в английском! Оно используется в расписаниях, законах природы, привычках, чувствах и мыслях.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 7 — PRESENT CONTINUOUS ============ -->
+<!-- ============ СЛАЙД 8 — PRESENT CONTINUOUS ============ -->
 <div class="slide">
 <h2>⏳ Present Continuous — настоящее длительное</h2>
 <div class="box">
@@ -395,13 +479,17 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">⏳ Present Continuous</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое происходит <b>прямо сейчас, в этот момент</b>. Мы говорим о том, что делаем в данную минуту.<br><br>
-<b>Проще говоря:</b> то, что происходит <b>здесь и сейчас</b>. Например: «Я сейчас читаю», «Он сейчас играет», «Посмотри! Идёт дождь».
+<b>Проще говоря:</b> то, что происходит <b>здесь и сейчас</b>.<br><br>
+<b>Примеры на русском:</b> «Я сейчас читаю», «Он сейчас играет», «Посмотри! Идёт дождь», «Она сейчас разговаривает по телефону».
 </div>
 <div class="formula-box">
+<b>Утверждение:</b><br>
 <span class="plus">+</span> I <b>am playing</b><br>
 <span class="plus">+</span> He / She / It <b>is playing</b><br>
-<span class="plus">+</span> You / We / They <b>are playing</b><br>
-<span class="minus">−</span> I'm not playing / He isn't playing<br>
+<span class="plus">+</span> You / We / They <b>are playing</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I<b>'m not</b> playing / He <b>isn't</b> playing<br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Am</b> I playing? / <b>Is</b> he playing? / <b>Are</b> they playing?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -418,11 +506,17 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">They <b>are playing</b> football at the moment. <span class="ru">— Они играют в футбол сейчас.</span></div>
 <div class="ex-line">He <b>isn't sleeping</b> now. <span class="ru">— Он сейчас не спит.</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>am / is / are + глагол + ing</b>. Например: play → play<b>ing</b>, read → read<b>ing</b>, write → writ<b>ing</b>.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>am / is / are + глагол + ing</b>.<br>
+play → play<b>ing</b>, read → read<b>ing</b>, write → writ<b>ing</b> (убираем -e), run → run<b>ning</b> (удваиваем согласную).</div>
+
+<div class="rule red">🚫 <b>Важно:</b> глаголы чувств (love, like, hate, know, want, see, hear) <b>НЕ используются</b> в Continuous. Говорим: I <b>like</b> apples (не «I am liking»).</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Present Continuous также используется для <b>запланированных действий в будущем</b>: I am meeting him tomorrow — Я встречаюсь с ним завтра (уже договорились).</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 8 — PRESENT PERFECT ============ -->
+<!-- ============ СЛАЙД 9 — PRESENT PERFECT ============ -->
 <div class="slide">
 <h2>💯 Present Perfect — настоящее совершённое</h2>
 <div class="box">
@@ -430,22 +524,26 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">💯 Present Perfect</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое <b>уже закончилось</b>, но его <b>результат важен сейчас</b>. Или опыт, который мы получили когда-то в жизни.<br><br>
-<b>Проще говоря:</b> «Я уже сделал», «Я только что пришёл», «Я никогда не был в Лондоне». Действие в прошлом, но важен <b>результат</b> в настоящем.
+<b>Проще говоря:</b> «Я уже сделал», «Я только что пришёл», «Я никогда не был в Лондоне». Действие в прошлом, но важен <b>результат</b> в настоящем.<br><br>
+<b>Примеры на русском:</b> «Я уже поел» (поэтому не хочу есть сейчас), «Она только что ушла» (её нет сейчас), «Ты когда-нибудь был в Париже?» (опыт).
 </div>
 <div class="formula-box">
+<b>Утверждение:</b><br>
 <span class="plus">+</span> I / You / We / They <b>have played</b><br>
-<span class="plus">+</span> He / She / It <b>has played</b><br>
-<span class="minus">−</span> I <b>haven't played</b> / He <b>hasn't played</b><br>
+<span class="plus">+</span> He / She / It <b>has played</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>haven't played</b> / He <b>hasn't played</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Have</b> I played? / <b>Has</b> he played?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
 <div class="markers">
 <span class="marker-pill">just — только что</span>
 <span class="marker-pill">already — уже</span>
-<span class="marker-pill">yet — ещё (в вопросах и отрицаниях)</span>
+<span class="marker-pill">yet — ещё</span>
 <span class="marker-pill">ever — когда-либо</span>
 <span class="marker-pill">never — никогда</span>
-<span class="marker-pill">since — с (какого-то момента)</span>
+<span class="marker-pill">since — с</span>
 <span class="marker-pill">for — в течение</span>
 </div>
 <div class="marker-title">📝 Примеры:</div>
@@ -454,11 +552,15 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">Have you <b>ever been</b> to London? <span class="ru">— Ты когда-нибудь был в Лондоне?</span></div>
 <div class="ex-line">I <b>have never seen</b> this film. <span class="ru">— Я никогда не видел этот фильм.</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>have / has + V3</b>. V3 — это третья форма глагола. У правильных — с <b>-ed</b>, у неправильных — учить: go → gone, do → done, see → seen.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>have / has + V3</b>.<br>
+V3 — третья форма глагола. У правильных — с <b>-ed</b> (play → played). У неправильных — учить: go → gone, do → done, see → seen.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Present Perfect — самое сложное время для русских! В русском языке нет прямого аналога. Главное понять: <b>действие в прошлом, но результат важен сейчас</b>.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 9 — PAST SIMPLE ============ -->
+<!-- ============ СЛАЙД 10 — PAST SIMPLE ============ -->
 <div class="slide">
 <h2>⏪ Past Simple — простое прошедшее</h2>
 <div class="box">
@@ -466,11 +568,15 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">⏪ Past Simple</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое <b>произошло в прошлом</b> и уже <b>закончилось</b>. Мы знаем, когда именно это было.<br><br>
-<b>Проще говоря:</b> «Я вчера ходил в школу», «Он играл в футбол час назад», «Мы были дома в 5 вечера». Прошлое, которое закончилось.
+<b>Проще говоря:</b> «Я вчера ходил в школу», «Он играл в футбол час назад», «Мы были дома в 5 вечера».<br><br>
+<b>Примеры на русском:</b> «Вчера я видел друга», «Она купила книгу в прошлом году», «Мы ездили в Москву в 2020».
 </div>
 <div class="formula-box">
-<span class="plus">+</span> I <b>played</b> / He <b>went</b><br>
-<span class="minus">−</span> I <b>didn't play</b> / He <b>didn't go</b><br>
+<b>Утверждение:</b><br>
+<span class="plus">+</span> I / You / He / She / It / We / They <b>played</b> / <b>went</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>didn't play</b> / He <b>didn't go</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Did</b> I play? / <b>Did</b> he go?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -487,11 +593,19 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">We <b>didn't see</b> him yesterday. <span class="ru">— Мы не видели его вчера.</span></div>
 <div class="ex-line"><b>Did</b> you <b>watch</b> TV yesterday? <span class="ru">— Ты смотрел телевизор вчера?</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>V2</b> — вторая форма глагола. У правильных — <b>+ed</b> (play → played). У неправильных — учить: go → went, see → saw.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>V2</b> — вторая форма глагола.<br>
+У правильных — <b>+ed</b> (play → played).<br>
+У неправильных — учить: go → went, see → saw, do → did.</div>
+
+<div class="rule red">🚫 <b>Важно:</b> в отрицаниях и вопросах глагол возвращается в <b>первую форму</b> (V1), потому что did уже показывает прошедшее:<br>
+✅ He <b>didn't go</b>. ❌ He didn't <b>went</b>.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> в Past Simple у <b>did</b> одна форма для всех лиц — did. Не нужно думать про he/she/it — это делает время простым!</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 10 — PAST CONTINUOUS ============ -->
+<!-- ============ СЛАЙД 11 — PAST CONTINUOUS ============ -->
 <div class="slide">
 <h2>⏮️ Past Continuous — прошедшее длительное</h2>
 <div class="box">
@@ -499,12 +613,16 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">⏮️ Past Continuous</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое <b>длилось</b> в определённый момент в прошлом. Мы говорим о том, что происходило в конкретное время.<br><br>
-<b>Проще говоря:</b> «Я читал в 5 часов вечера», «Она играла, когда я вошёл». Процесс в прошлом.
+<b>Проще говоря:</b> «Я читал в 5 часов вечера», «Она играла, когда я вошёл», «Мы гуляли весь вечер».<br><br>
+<b>Примеры на русском:</b> «Вчера в 8 вечера я смотрел фильм», «Когда зазвонил телефон, я готовил ужин».
 </div>
 <div class="formula-box">
+<b>Утверждение:</b><br>
 <span class="plus">+</span> I / He / She / It <b>was playing</b><br>
-<span class="plus">+</span> You / We / They <b>were playing</b><br>
-<span class="minus">−</span> I <b>wasn't playing</b> / They <b>weren't playing</b><br>
+<span class="plus">+</span> You / We / They <b>were playing</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>wasn't playing</b> / They <b>weren't playing</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Was</b> I playing? / <b>Were</b> they playing?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -519,23 +637,33 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">She <b>was playing</b> when I came in. <span class="ru">— Она играла, когда я вошёл.</span></div>
 <div class="ex-line">They <b>were watching</b> TV all evening. <span class="ru">— Они смотрели телевизор весь вечер.</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>was / were + глагол + ing</b>. I/he/she/it → was, you/we/they → were.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>was / were + глагол + ing</b>.<br>
+I/he/she/it → <b>was</b>, you/we/they → <b>were</b>.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Past Continuous часто используется вместе с Past Simple:<br>
+<b>I was reading</b> when <b>he came</b>. — Я читал, когда он пришёл.<br>
+Длинное действие (was reading) — Past Continuous, короткое (came) — Past Simple.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 11 — PAST PERFECT ============ -->
+<!-- ============ СЛАЙД 12 — PAST PERFECT ============ -->
 <div class="slide">
 <h2>📜 Past Perfect — предпрошедшее</h2>
 <div class="box">
 <div class="time-block">
 <div class="time-name">📜 Past Perfect</div>
 <div class="what-means">
-<b>Что обозначает:</b> действие, которое произошло <b>раньше другого действия в прошлом</b>. То есть, «прошлое в прошлом».<br><br>
-<b>Проще говоря:</b> «Когда он пришёл, я уже поел» — сначала поел, потом он пришёл. Первое действие — Past Perfect, второе — Past Simple.
+<b>Что обозначает:</b> действие, которое произошло <b>раньше другого действия в прошлом</b>. То есть «прошлое в прошлом».<br><br>
+<b>Проще говоря:</b> «Когда он пришёл, я уже поел» — сначала поел, потом он пришёл. Или: «Она сказала, что видела этот фильм раньше».<br><br>
+<b>Примеры на русском:</b> «К тому времени, как мы пришли, они уже ушли», «Я не знал, что она уехала».
 </div>
 <div class="formula-box">
-<span class="plus">+</span> I <b>had played</b> (для всех лиц одинаково)<br>
-<span class="minus">−</span> I <b>hadn't played</b><br>
+<b>Утверждение:</b><br>
+<span class="plus">+</span> I / You / He / She / It / We / They <b>had played</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>hadn't played</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Had</b> I played?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -550,11 +678,15 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">She <b>had finished</b> by 5 pm. <span class="ru">— Она закончила к 5 вечера.</span></div>
 <div class="ex-line">He said he <b>had seen</b> that film. <span class="ru">— Он сказал, что видел тот фильм (раньше).</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>had + V3</b>. Форма <b>had</b> одинакова для всех лиц.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>had + V3</b>.<br>
+Форма <b>had</b> одинакова для всех лиц!</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Past Perfect — это «прошлое в прошлом». Оно показывает, какое из двух прошлых действий случилось <b>раньше</b>. Если в предложении есть два действия в прошлом, более раннее — в Past Perfect.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 12 — FUTURE SIMPLE ============ -->
+<!-- ============ СЛАЙД 13 — FUTURE SIMPLE ============ -->
 <div class="slide">
 <h2>🚀 Future Simple — простое будущее</h2>
 <div class="box">
@@ -562,11 +694,15 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">🚀 Future Simple</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое <b>произойдёт в будущем</b>. Мы говорим о том, что будем делать завтра, на следующей неделе, скоро.<br><br>
-<b>Проще говоря:</b> «Я завтра пойду в школу», «Он скоро придёт», «Мы будем играть в футбол».
+<b>Проще говоря:</b> «Я завтра пойду в школу», «Он скоро придёт», «Мы будем играть в футбол».<br><br>
+<b>Примеры на русском:</b> «Завтра я позвоню бабушке», «Летом мы поедем на море», «Он скоро вернётся».
 </div>
 <div class="formula-box">
-<span class="plus">+</span> I <b>will play</b> (для всех лиц одинаково)<br>
-<span class="minus">−</span> I <b>won't play</b><br>
+<b>Утверждение:</b><br>
+<span class="plus">+</span> I / You / He / She / It / We / They <b>will play</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>won't play</b> (will not)<br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Will</b> I play?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -583,11 +719,19 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">They <b>won't come</b> tomorrow. <span class="ru">— Они не придут завтра.</span></div>
 <div class="ex-line"><b>Will</b> you <b>help</b> me? <span class="ru">— Ты поможешь мне?</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>will + глагол в начальной форме</b>. Без to и без s!</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>will + глагол в начальной форме</b>.<br>
+Без to и без s! Will одинакова для всех лиц.</div>
+
+<div class="rule green">💡 <b>Другие способы сказать о будущем:</b><br>
+<b>to be going to</b> + глагол — планы, намерения: I am going to visit my granny.<br>
+<b>Present Continuous</b> — договорённость: I am meeting him at 5.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> в современном английском <b>shall</b> почти не используется для будущего — только <b>will</b>. Shall осталось в вопросах-предложениях: Shall we go? — Пойдём?</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 13 — FUTURE CONTINUOUS ============ -->
+<!-- ============ СЛАЙД 14 — FUTURE CONTINUOUS ============ -->
 <div class="slide">
 <h2>🔮 Future Continuous — будущее длительное</h2>
 <div class="box">
@@ -595,11 +739,15 @@ tr:last-child td{border-bottom:none}
 <div class="time-name">🔮 Future Continuous</div>
 <div class="what-means">
 <b>Что обозначает:</b> действие, которое <b>будет длиться</b> в определённый момент в будущем.<br><br>
-<b>Проще говоря:</b> «Завтра в 5 вечера я буду читать», «В это время завтра мы будем лететь в самолёте».
+<b>Проще говоря:</b> «Завтра в 5 вечера я буду читать», «В это время завтра мы будем лететь в самолёте».<br><br>
+<b>Примеры на русском:</b> «Завтра в 8 я буду смотреть фильм», «Когда ты придёшь, я буду готовить ужин».
 </div>
 <div class="formula-box">
-<span class="plus">+</span> I <b>will be playing</b><br>
-<span class="minus">−</span> I <b>won't be playing</b><br>
+<b>Утверждение:</b><br>
+<span class="plus">+</span> I / You / He / She / It / We / They <b>will be playing</b><br><br>
+<b>Отрицание:</b><br>
+<span class="minus">−</span> I <b>won't be playing</b><br><br>
+<b>Вопрос:</b><br>
 <span class="quest">?</span> <b>Will</b> I <b>be playing</b>?
 </div>
 <div class="marker-title">🎯 Маркеры:</div>
@@ -612,16 +760,70 @@ tr:last-child td{border-bottom:none}
 <div class="ex-line">At 5 pm tomorrow I <b>will be playing</b> football. <span class="ru">— Завтра в 5 вечера я буду играть в футбол.</span></div>
 <div class="ex-line">This time tomorrow we <b>will be flying</b> to London. <span class="ru">— Завтра в это время мы будем лететь в Лондон.</span></div>
 </div>
-<div class="rule">⚠️ <b>Формула:</b> <b>will be + глагол + ing</b>.</div>
+
+<div class="rule yellow">⚠️ <b>Формула:</b> <b>will be + глагол + ing</b>.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> Future Continuous используется реже, чем остальные времена. Но оно очень красивое и показывает «процесс в будущем».</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 14 — НЕПРАВИЛЬНЫЕ ============ -->
+<!-- ============ СЛАЙД 15 — СРАВНЕНИЕ ВРЕМЁН ============ -->
+<div class="slide">
+<h2>🔀 Сравнение времён — как выбрать?</h2>
+<div class="box">
+<div class="rule green">💡 <b>Самое главное:</b> время определяется по <b>смыслу</b> и <b>маркерам</b>. Вот простая шпаргалка:</div>
+
+<h3>🕐 Сравнение прошедших времён</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Время</th><th>Когда использовать</th><th>Пример</th></tr>
+<tr><td><b>Past Simple</b></td><td>Действие закончилось, есть точное время</td><td>I <b>went</b> to school yesterday.</td></tr>
+<tr><td><b>Past Continuous</b></td><td>Действие длилось в прошлом</td><td>I <b>was reading</b> at 5 pm.</td></tr>
+<tr><td><b>Past Perfect</b></td><td>Действие раньше другого прошлого</td><td>I <b>had read</b> before he came.</td></tr>
+</table>
+</div>
+
+<h3>🕐 Сравнение настоящих времён</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Время</th><th>Когда использовать</th><th>Пример</th></tr>
+<tr><td><b>Present Simple</b></td><td>Регулярно, обычно, всегда</td><td>I <b>go</b> to school every day.</td></tr>
+<tr><td><b>Present Continuous</b></td><td>Прямо сейчас, в этот момент</td><td>I <b>am going</b> to school now.</td></tr>
+<tr><td><b>Present Perfect</b></td><td>Результат важен сейчас</td><td>I <b>have gone</b> to school.</td></tr>
+</table>
+</div>
+
+<h3>🚀 Сравнение будущих времён</h3>
+<div class="table-wrap">
+<table>
+<tr><th>Время</th><th>Когда использовать</th><th>Пример</th></tr>
+<tr><td><b>Future Simple</b></td><td>Просто будущее действие</td><td>I <b>will go</b> to school tomorrow.</td></tr>
+<tr><td><b>Future Continuous</b></td><td>Будет длиться в будущем</td><td>I <b>will be going</b> to school at 8 am.</td></tr>
+</table>
+</div>
+
+<div class="rule yellow">🎯 <b>Простой тест:</b><br>
+1. Действие <b>обычно</b>? → Present Simple<br>
+2. <b>Сейчас</b>? → Present Continuous<br>
+3. <b>Уже сделано</b>, важен результат? → Present Perfect<br>
+4. <b>Вчера, в прошлом</b>? → Past Simple<br>
+5. <b>Длилось</b> в прошлом? → Past Continuous<br>
+6. <b>До другого прошлого</b>? → Past Perfect<br>
+7. <b>Завтра, потом</b>? → Future Simple<br>
+8. <b>Будет длиться</b>? → Future Continuous</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> носители языка используют только <b>5-6 времён</b> в повседневной речи. Остальные — в книгах, новостях, официальных текстах.</div>
+</div>
+</div>
+
+<!-- ============ СЛАЙД 16 — НЕПРАВИЛЬНЫЕ ГЛАГОЛЫ ============ -->
 <div class="slide">
 <h2>📋 Неправильные глаголы (топ-30)</h2>
 <div class="box">
+<div class="rule green">💡 <b>Неправильные глаголы</b> — это глаголы, которые образуют прошедшее время не по правилу +ed, а меняют форму. Их нужно <b>учить наизусть</b>.</div>
+<div class="table-wrap">
 <table>
-<tr><th>V1</th><th>V2</th><th>V3</th><th>Перевод</th></tr>
+<tr><th>V1 (сейчас)</th><th>V2 (прошедшее)</th><th>V3 (причастие)</th><th>Перевод</th></tr>
 <tr><td>be</td><td>was/were</td><td>been</td><td>быть</td></tr>
 <tr><td>have</td><td>had</td><td>had</td><td>иметь</td></tr>
 <tr><td>do</td><td>did</td><td>done</td><td>делать</td></tr>
@@ -649,46 +851,167 @@ tr:last-child td{border-bottom:none}
 <tr><td>leave</td><td>left</td><td>left</td><td>покидать</td></tr>
 <tr><td>sleep</td><td>slept</td><td>slept</td><td>спать</td></tr>
 <tr><td>win</td><td>won</td><td>won</td><td>побеждать</td></tr>
+<tr><td>read</td><td>read</td><td>read</td><td>читать (произношение меняется!)</td></tr>
+<tr><td>put</td><td>put</td><td>put</td><td>класть</td></tr>
+<tr><td>cut</td><td>cut</td><td>cut</td><td>резать</td></tr>
 </table>
+</div>
+
+<div class="rule yellow">📝 <b>Как учить:</b> выписывай в столбик и повторяй вслух: <b>go — went — gone</b>, <b>see — saw — seen</b>. Учи по 5 глаголов в день.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> в английском около <b>200 неправильных глаголов</b>, но в повседневной речи используется только <b>50-60</b>. Остальные — редко.</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 15 — МАРКЕРЫ ============ -->
+<!-- ============ СЛАЙД 17 — МАРКЕРЫ ============ -->
 <div class="slide">
 <h2>🎯 Маркеры времён — шпаргалка</h2>
 <div class="box">
-<div class="rule">💡 <b>Увидел маркер — сразу знаешь время!</b></div>
+<div class="rule green">💡 <b>Маркеры</b> — это слова-подсказки, которые помогают определить время. Увидел маркер — сразу знаешь, какое время!</div>
+<div class="table-wrap">
 <table>
 <tr><th>Маркер</th><th>Время</th><th>Формула</th></tr>
-<tr><td>always, usually, every day</td><td>Present Simple</td><td>V / V+s</td></tr>
-<tr><td>now, at the moment, look!</td><td>Present Continuous</td><td>am/is/are + Ving</td></tr>
-<tr><td>just, already, yet, ever, never</td><td>Present Perfect</td><td>have/has + V3</td></tr>
-<tr><td>yesterday, ago, last week</td><td>Past Simple</td><td>V2</td></tr>
+<tr><td>always, usually, often, sometimes, never, every day</td><td>Present Simple</td><td>V / V+s</td></tr>
+<tr><td>now, at the moment, look!, listen!, right now</td><td>Present Continuous</td><td>am/is/are + Ving</td></tr>
+<tr><td>just, already, yet, ever, never, since, for</td><td>Present Perfect</td><td>have/has + V3</td></tr>
+<tr><td>yesterday, ago, last week, in 2020</td><td>Past Simple</td><td>V2</td></tr>
 <tr><td>while, when, at 5 pm yesterday</td><td>Past Continuous</td><td>was/were + Ving</td></tr>
 <tr><td>before, after, by the time</td><td>Past Perfect</td><td>had + V3</td></tr>
-<tr><td>tomorrow, next week, soon</td><td>Future Simple</td><td>will + V</td></tr>
-<tr><td>at 5 pm tomorrow</td><td>Future Continuous</td><td>will be + Ving</td></tr>
+<tr><td>tomorrow, next week, soon, in 2 days</td><td>Future Simple</td><td>will + V</td></tr>
+<tr><td>at 5 pm tomorrow, all day tomorrow</td><td>Future Continuous</td><td>will be + Ving</td></tr>
 </table>
-<div class="rule"><b>Топ-5 правил:</b><br>
-1. He/She/It + <b>s</b> в Present Simple<br>
-2. После can/must/should — без to и без s<br>
-3. am/is/are + Ving в Continuous<br>
-4. have/has + V3 в Perfect<br>
-5. Неправильные глаголы — учить!</div>
+</div>
+
+<h3>💡 Топ-5 правил, которые чаще всего проверяют на уроках</h3>
+<div class="rule"><b>1.</b> После <b>he/she/it</b> в Present Simple глагол + <b>s</b>: He play<b>s</b>.</div>
+<div class="rule"><b>2.</b> После модальных глаголов (<b>can, must, should, may</b>) — <b>без to и без s</b>: I can <b>swim</b>.</div>
+<div class="rule"><b>3.</b> В Present Continuous — <b>am/is/are + Ving</b>: She <b>is reading</b>.</div>
+<div class="rule"><b>4.</b> В Present Perfect — <b>have/has + V3</b>: I <b>have done</b>.</div>
+<div class="rule"><b>5.</b> Неправильные глаголы — <b>учить!</b> go-went-gone, see-saw-seen.</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> маркеры времени можно запомнить как <b>«слово-время»</b>. Если видишь <b>yesterday</b> — время точно Past Simple. Если <b>now</b> — Present Continuous. Это самый быстрый способ определить время!</div>
 </div>
 </div>
 
-<!-- ============ СЛАЙД 16 — ТРЕНАЖЁР ============ -->
+<!-- ============ СЛАЙД 18 — ЧАСТЫЕ ОШИБКИ ============ -->
+<div class="slide">
+<h2>⚠️ Частые ошибки в английском</h2>
+<div class="box">
+<div class="rule green">💡 Вот ошибки, которые делают <b>почти все</b> русские ученики. Прочитай и запомни!</div>
+
+<h3>1. Забывают -s в Present Simple</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td>He <b>go</b> to school.</td><td>He <b>goes</b> to school.</td></tr>
+<tr><td>She <b>like</b> apples.</td><td>She <b>likes</b> apples.</td></tr>
+</table>
+</div>
+
+<h3>2. Ставят to после модальных глаголов</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td>I can <b>to</b> swim.</td><td>I can <b>swim</b>.</td></tr>
+<tr><td>He must <b>to</b> go.</td><td>He must <b>go</b>.</td></tr>
+</table>
+</div>
+
+<h3>3. Используют V2 после did</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td>He didn't <b>went</b>.</td><td>He didn't <b>go</b>.</td></tr>
+<tr><td>Did you <b>saw</b> it?</td><td>Did you <b>see</b> it?</td></tr>
+</table>
+</div>
+
+<h3>4. Путают Present Perfect и Past Simple</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td>I <b>have went</b> to school yesterday.</td><td>I <b>went</b> to school yesterday.</td></tr>
+<tr><td>I <b>have done</b> it yesterday.</td><td>I <b>did</b> it yesterday.</td></tr>
+</table>
+</div>
+
+<h3>5. Путают a / an / the</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td><b>A</b> apple.</td><td><b>An</b> apple.</td></tr>
+<tr><td>I like <b>the</b> cats. (вообще)</td><td>I like <b>cats</b>. (без артикля)</td></tr>
+</table>
+</div>
+
+<h3>6. Путают much / many</h3>
+<div class="table-wrap">
+<table>
+<tr><th>❌ Неправильно</th><th>✅ Правильно</th></tr>
+<tr><td><b>Much</b> books.</td><td><b>Many</b> books.</td></tr>
+<tr><td><b>Many</b> water.</td><td><b>Much</b> water.</td></tr>
+</table>
+</div>
+
+<div class="rule yellow">📝 <b>Правило:</b> <b>many</b> — с исчисляемыми (many books), <b>much</b> — с неисчисляемыми (much water).</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> если знать эти 6 ошибок и не делать их — уже можно получить <b>хорошую оценку</b> на контрольной! Это самые частые ошибки школьников.</div>
+</div>
+</div>
+
+<!-- ============ СЛАЙД 19 — КАК УЧИТЬ ВРЕМЕНА ============ -->
+<div class="slide">
+<h2>📚 Как учить времена — советы</h2>
+<div class="box">
+<div class="rule green">💡 <b>Учить времена легко, если подойти с умом!</b> Вот проверенные советы:</div>
+
+<h3>1. 🎯 Учи времена в правильном порядке</h3>
+<div class="rule">Сначала <b>Present Simple</b> (простое), потом <b>Past Simple</b> (тоже простое), потом <b>Future Simple</b>. Только потом — Continuous и Perfect. Не пытайся выучить всё сразу!</div>
+
+<h3>2. 📝 Учи с примерами</h3>
+<div class="rule">Не запоминай формулы. Запоминай <b>предложения</b>: «I <b>go</b> to school every day», «I <b>am going</b> to school now». С примерами правила запоминаются легче.</div>
+
+<h3>3. 🗣 Проговаривай вслух</h3>
+<div class="rule">Читай примеры <b>вслух</b> много раз. Так работает и слуховая, и мышечная память. Лучше 10 примеров по 5 раз, чем 50 примеров по 1 разу.</div>
+
+<h3>4. 🎯 Учи маркеры в первую очередь</h3>
+<div class="rule">Запомни маркеры: <b>yesterday</b> → Past Simple, <b>now</b> → Present Continuous, <b>already</b> → Present Perfect. По маркеру ты <b>сразу узнаешь</b> время.</div>
+
+<h3>5. 🎮 Тренируйся в тренажёре</h3>
+<div class="rule">Используй <b>тренажёр и тест</b> в этой презентации. Каждый день по 10-15 заданий — и через неделю ты будешь знать времена отлично!</div>
+
+<h3>6. 📅 Повторяй регулярно</h3>
+<div class="rule">Повторяй времена <b>каждый день</b> по 10-15 минут. Лучше понемногу, но регулярно, чем раз в неделю по 2 часа.</div>
+
+<h3>7. 🤝 Объясни другу</h3>
+<div class="rule">Если ты можешь <b>объяснить</b> правило другому человеку — значит, ты его <b>точно знаешь</b>. Попробуй объяснить времена однокласснику!</div>
+
+<div class="rule yellow">🎯 <b>Простой план на неделю:</b><br>
+<b>Пн:</b> Present Simple + Past Simple<br>
+<b>Вт:</b> Future Simple + Present Continuous<br>
+<b>Ср:</b> Present Perfect + Past Continuous<br>
+<b>Чт:</b> Past Perfect + Future Continuous<br>
+<b>Пт:</b> Сравнение времён + маркеры<br>
+<b>Сб:</b> Неправильные глаголы (топ-30)<br>
+<b>Вс:</b> Тренажёр и тест!</div>
+
+<div class="fact-card"><span class="fact-icon">🌟</span><b>Интересный факт:</b> если каждый день уделять английскому <b>15 минут</b> — за год получится <b>91 час</b> практики! Этого достаточно, чтобы свободно говорить на базовые темы.</div>
+</div>
+</div>
+
+<!-- ============ СЛАЙД 20 — ТРЕНАЖЁР ============ -->
 <div class="slide">
 <h2>🎮 Тренажёр</h2>
 <div class="box">
 <div class="trainer">
 <div class="hint-top">Вставь правильную форму глагола в скобках</div>
 <div class="word" id="trainerSentence">Загрузка...</div>
-<input type="text" id="trainerInput" placeholder="Введи ответ" autocomplete="off" onkeypress="if(event.key==='Enter')checkTrainer()">
-<div style="margin-top:12px">
+<input type="text" id="trainerInput" placeholder="Введи ответ" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" onkeypress="if(event.key==='Enter')checkTrainer()">
+<div style="margin-top:10px">
 <button class="btn-mini" onclick="checkTrainer()">Проверить</button>
 <button class="btn-mini orange" onclick="nextTrainer()">Следующее ▶</button>
+</div>
+<div style="margin-top:6px">
 <button class="btn-mini gray" onclick="restartTrainer()">🔄 Заново</button>
 </div>
 <div class="feedback" id="trainerFeedback"></div>
@@ -697,32 +1020,33 @@ tr:last-child td{border-bottom:none}
 </div>
 </div>
 
-<!-- ============ СЛАЙД 17 — ТЕСТ ============ -->
+<!-- ============ СЛАЙД 21 — ТЕСТ ============ -->
 <div class="slide">
 <h2>🧪 Тест</h2>
 <div class="box">
-<p style="text-align:center;color:#fff;margin-bottom:12px;font-weight:600;text-shadow:1px 1px 3px rgba(0,0,0,.4)">Вопросы генерируются случайно — каждый раз новые!</p>
+<p style="text-align:center;color:#fff;margin-bottom:12px;font-weight:600;font-size:clamp(.82rem,2.6vw,.95rem)">Вопросы генерируются случайно!</p>
 <div id="quizContainer"></div>
-<button class="btn-check" onclick="checkQuiz()">✅ Проверить ответы</button>
-<button class="btn-check blue" onclick="restartQuiz()">🔄 Новый тест</button>
+<button class="btn-check" onclick="checkQuiz()">✅ Проверить</button>
+<button class="btn-check blue" onclick="restartQuiz()">🔄 Новый</button>
 <div class="score" id="score"></div>
 </div>
 </div>
 
 <!-- ============ НИЖНЯЯ НАВИГАЦИЯ ============ -->
 <div class="nav">
-<button onclick="prev()">◀ Назад</button>
-<div class="cnt"><span id="cur">1</span> / <span id="tot">17</span></div>
-<button onclick="next()">Вперёд ▶</button>
+<button onclick="prev()">◀</button>
+<div class="cnt"><span id="cur">1</span>/<span id="tot">21</span></div>
+<button onclick="next()">▶</button>
 </div>
 
 <script>
 // ============ ОБЛАКА ============
 const cloudsContainer=document.getElementById('clouds');
-for(let i=0;i<14;i++){
+const cloudCount = window.innerWidth < 600 ? 8 : 14;
+for(let i=0;i<cloudCount;i++){
   const cl=document.createElement('div');
   cl.className='cloud';
-  const s=Math.random()*150+70;
+  const s=Math.random()*120+60;
   cl.style.width=s+'px';
   cl.style.height=s*.55+'px';
   cl.style.top=Math.random()*100+'%';
@@ -733,14 +1057,15 @@ for(let i=0;i<14;i++){
   cloudsContainer.appendChild(cl);
 }
 
-// ============ МЕНЮ РОБОТ ============
+// ============ МЕНЮ ============
 function toggleMenu(){
   document.getElementById('menuPanel').classList.toggle('open');
 }
 document.addEventListener('click',e=>{
   const menu=document.querySelector('.menu-robot');
-  if(menu && !menu.contains(e.target)){
-    document.getElementById('menuPanel').classList.remove('open');
+  const panel=document.getElementById('menuPanel');
+  if(menu && !menu.contains(e.target) && !panel.contains(e.target)){
+    panel.classList.remove('open');
   }
 });
 
@@ -751,8 +1076,11 @@ document.getElementById('tot').textContent=sl.length;
 function show(n){
   sl.forEach((s,i)=>s.classList.toggle('active',i===n));
   document.getElementById('cur').textContent=n+1;
-  window.scrollTo(0,0);
+  const activeSlide = sl[n];
+  if(activeSlide) activeSlide.scrollTop = 0;
   document.getElementById('menuPanel').classList.remove('open');
+  const pct=((n+1)/sl.length)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
 }
 function next(){if(idx<sl.length-1){idx++;show(idx)}}
 function prev(){if(idx>0){idx--;show(idx)}}
@@ -761,57 +1089,37 @@ document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT')return;
   if(e.key==='ArrowRight'){e.preventDefault();next()}
   if(e.key==='ArrowLeft'){e.preventDefault();prev()}
-  if(e.key==='Escape'){document.getElementById('menuPanel').classList.remove('open')}
+  if(e.key==='Escape'){
+    document.getElementById('menuPanel').classList.remove('open');
+  }
 });
 
-// ============ БАЗА ЗАДАНИЙ ============
+// ============ ТРЕНАЖЁР ============
 const trainerBank = [
-  {s:"She ___ (go) to school every day.", a:"goes", correct:"goes",
-   explanation:"<b>Present Simple</b> — регулярное действие. Маркер <b>every day</b>. She (3-е лицо, ед. ч.) → go + <b>-es</b> = goes."},
-  {s:"Look! They ___ (play) football.", a:"are playing", correct:"are playing",
-   explanation:"<b>Present Continuous</b> — действие сейчас. Маркер <b>Look!</b>. Формула: are + play<b>ing</b>."},
-  {s:"I ___ (already / do) my homework.", a:"have already done", correct:"have already done",
-   explanation:"<b>Present Perfect</b> — результат важен сейчас. Маркер <b>already</b>. Формула: have + already + done (V3 от do)."},
-  {s:"He ___ (go) to the cinema yesterday.", a:"went", correct:"went",
-   explanation:"<b>Past Simple</b> — законченное действие в прошлом. Маркер <b>yesterday</b>. Go → went (V2)."},
-  {s:"I ___ (can) swim.", a:"can", correct:"can",
-   explanation:"<b>Модальный глагол can</b>. После модальных — <b>без to и без s</b>."},
-  {s:"She ___ (be) my sister.", a:"is", correct:"is",
-   explanation:"<b>Глагол to be</b>. I → am, he/she/it → <b>is</b>, we/you/they → are."},
-  {s:"We ___ (be) at school yesterday.", a:"were", correct:"were",
-   explanation:"<b>To be в прошедшем</b>. Маркер <b>yesterday</b>. We → <b>were</b>."},
-  {s:"They ___ (play) football tomorrow.", a:"will play", correct:"will play",
-   explanation:"<b>Future Simple</b> — действие в будущем. Маркер <b>tomorrow</b>. Формула: will + play."},
-  {s:"He ___ (not / like) apples.", a:"doesn't like", correct:"doesn't like",
-   explanation:"<b>Present Simple, отрицание</b>. He → <b>doesn't</b> + глагол без s: doesn't like."},
-  {s:"This is ___ (I) book.", a:"my", correct:"my",
-   explanation:"<b>Притяжательное местоимение</b> перед существительным: I → my."},
-  {s:"Look! The cat ___ (sleep) on the sofa.", a:"is sleeping", correct:"is sleeping",
-   explanation:"<b>Present Continuous</b>. Маркер <b>Look!</b>. The cat → is + sleep<b>ing</b>."},
-  {s:"They ___ (be) my friends.", a:"are", correct:"are",
-   explanation:"<b>To be</b>. They → <b>are</b>."},
-  {s:"She ___ (have) a cat.", a:"has", correct:"has",
-   explanation:"<b>Have в Present Simple</b>. She (3-е лицо) → <b>has</b>."},
-  {s:"We ___ (watch) TV at 5 pm yesterday.", a:"were watching", correct:"were watching",
-   explanation:"<b>Past Continuous</b> — длилось в прошлом. Маркер <b>at 5 pm yesterday</b>. We → were + watch<b>ing</b>."},
-  {s:"I ___ (never / be) to London.", a:"have never been", correct:"have never been",
-   explanation:"<b>Present Perfect</b> — опыт. Маркер <b>never</b>. I → have + never + been (V3 от be)."},
-  {s:"He ___ (can / not) swim.", a:"cannot swim", correct:"cannot swim",
-   explanation:"<b>Отрицание can</b>. Форма: cannot / can't + глагол без to."},
-  {s:"She ___ (not / be) at home now.", a:"isn't", correct:"isn't",
-   explanation:"<b>To be в отрицании</b>. She → is + not = <b>isn't</b>."},
-  {s:"They ___ (already / finish) the project.", a:"have already finished", correct:"have already finished",
-   explanation:"<b>Present Perfect</b>. They → have + already + finish<b>ed</b>."},
-  {s:"I ___ (see) him yesterday.", a:"saw", correct:"saw",
-   explanation:"<b>Past Simple</b>. Маркер <b>yesterday</b>. See → <b>saw</b> (V2)."},
-  {s:"You ___ (should) sleep more.", a:"should", correct:"should",
-   explanation:"<b>Модальный should</b> — совет: тебе следует. После модальных — без to и s."}
+  {s:"She ___ (go) to school every day.", a:"goes", correct:"goes", explanation:"<b>Present Simple</b> — регулярное действие. Маркер <b>every day</b>. She → +es: goes."},
+  {s:"Look! They ___ (play) football.", a:"are playing", correct:"are playing", explanation:"<b>Present Continuous</b> — сейчас. Маркер <b>Look!</b>. They → are + playing."},
+  {s:"I ___ (already / do) my homework.", a:"have already done", correct:"have already done", explanation:"<b>Present Perfect</b> — результат. Маркер <b>already</b>. I → have + already + done."},
+  {s:"He ___ (go) to the cinema yesterday.", a:"went", correct:"went", explanation:"<b>Past Simple</b> — закончилось. Маркер <b>yesterday</b>. Go → went."},
+  {s:"I ___ (can) swim.", a:"can", correct:"can", explanation:"<b>Модальный can</b> — без to и без s."},
+  {s:"She ___ (be) my sister.", a:"is", correct:"is", explanation:"<b>To be</b>. She → is."},
+  {s:"We ___ (be) at school yesterday.", a:"were", correct:"were", explanation:"<b>To be в прошедшем</b>. We → were."},
+  {s:"They ___ (play) football tomorrow.", a:"will play", correct:"will play", explanation:"<b>Future Simple</b>. Tomorrow. Will + play."},
+  {s:"He ___ (not / like) apples.", a:"doesn't like", correct:"doesn't like", explanation:"<b>Present Simple, отрицание</b>. He → doesn't + like."},
+  {s:"This is ___ (I) book.", a:"my", correct:"my", explanation:"<b>Притяжательное</b> перед существительным: my."},
+  {s:"Look! The cat ___ (sleep) on the sofa.", a:"is sleeping", correct:"is sleeping", explanation:"<b>Present Continuous</b>. Look! The cat → is sleeping."},
+  {s:"They ___ (be) my friends.", a:"are", correct:"are", explanation:"<b>To be</b>. They → are."},
+  {s:"She ___ (have) a cat.", a:"has", correct:"has", explanation:"<b>Have</b>. She → has."},
+  {s:"We ___ (watch) TV at 5 pm yesterday.", a:"were watching", correct:"were watching", explanation:"<b>Past Continuous</b>. We → were watching."},
+  {s:"I ___ (never / be) to London.", a:"have never been", correct:"have never been", explanation:"<b>Present Perfect</b>. I → have + never + been."},
+  {s:"He ___ (can / not) swim.", a:"cannot swim", correct:"cannot swim", explanation:"Отрицание can: cannot swim."},
+  {s:"She ___ (not / be) at home now.", a:"isn't", correct:"isn't", explanation:"<b>To be</b>. She → isn't."},
+  {s:"They ___ (already / finish) the project.", a:"have already finished", correct:"have already finished", explanation:"<b>Present Perfect</b>. They → have + already + finished."},
+  {s:"I ___ (see) him yesterday.", a:"saw", correct:"saw", explanation:"<b>Past Simple</b>. Yesterday. See → saw."},
+  {s:"You ___ (should) sleep more.", a:"should", correct:"should", explanation:"<b>Модальный should</b> — совет."}
 ];
 
 let trainerOrder=[],trainerIdx=0,trainerScore=0,trainerTotal=0,trainerAnswered={};
-
 function shuffleArray(a){const arr=a.slice();for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
-
 function initTrainer(){
   const indices=[];
   for(let i=0;i<trainerBank.length;i++)indices.push(i);
@@ -834,7 +1142,6 @@ function showTrainer(){
   document.getElementById('trainerSentence').textContent=task.s;
   document.getElementById('trainerInput').value='';
   document.getElementById('trainerInput').disabled=false;
-  document.getElementById('trainerInput').focus();
   const fb=document.getElementById('trainerFeedback');
   fb.textContent='';fb.className='feedback';
 }
@@ -866,36 +1173,36 @@ function restartTrainer(){initTrainer()}
 
 // ============ ТЕСТ ============
 const quizBank = [
-  {q:"She ___ to school every day.", opts:["go","goes","going","is go"], correct:"goes", explanation:"<b>Present Simple</b> — регулярное действие. Маркер <b>every day</b>. She → +es: goes."},
-  {q:"Look! The cat ___ on the sofa.", opts:["sleep","sleeps","is sleeping","slept"], correct:"is sleeping", explanation:"<b>Present Continuous</b> — сейчас. Маркер <b>Look!</b>. The cat → is sleeping."},
-  {q:"I ___ my homework already.", opts:["do","did","have done","am doing"], correct:"have done", explanation:"<b>Present Perfect</b> — результат. Маркер <b>already</b>. I → have + done."},
+  {q:"She ___ to school every day.", opts:["go","goes","going","is go"], correct:"goes", explanation:"<b>Present Simple</b>. every day. She → goes."},
+  {q:"Look! The cat ___ on the sofa.", opts:["sleep","sleeps","is sleeping","slept"], correct:"is sleeping", explanation:"<b>Present Continuous</b>. Look! → is sleeping."},
+  {q:"I ___ my homework already.", opts:["do","did","have done","am doing"], correct:"have done", explanation:"<b>Present Perfect</b>. already. I → have + done."},
   {q:"Множественное число от «child»:", opts:["childs","childes","children","child"], correct:"children", explanation:"Исключение: child → children."},
-  {q:"I ___ swim very well.", opts:["can","can to","to can","cans"], correct:"can", explanation:"Модальный <b>can</b> — без to и без s."},
-  {q:"___ apple a day keeps the doctor away.", opts:["A","An","The","—"], correct:"An", explanation:"Артикль <b>an</b> перед гласным звуком."},
-  {q:"She ___ TV when I came in.", opts:["watch","watched","was watching","is watching"], correct:"was watching", explanation:"<b>Past Continuous</b> — длилось в прошлом. Маркер <b>when</b>. She → was watching."},
-  {q:"I ___ to the cinema yesterday.", opts:["go","went","gone","going"], correct:"went", explanation:"<b>Past Simple</b> — закончилось. Маркер <b>yesterday</b>. Go → went."},
-  {q:"My sister and I ___ students.", opts:["am","is","are","be"], correct:"are", explanation:"To be. My sister and I = we → are."},
+  {q:"I ___ swim very well.", opts:["can","can to","to can","cans"], correct:"can", explanation:"Модальный <b>can</b> — без to."},
+  {q:"___ apple a day keeps the doctor away.", opts:["A","An","The","—"], correct:"An", explanation:"<b>an</b> перед гласным звуком."},
+  {q:"She ___ TV when I came in.", opts:["watch","watched","was watching","is watching"], correct:"was watching", explanation:"<b>Past Continuous</b>. when. She → was watching."},
+  {q:"I ___ to the cinema yesterday.", opts:["go","went","gone","going"], correct:"went", explanation:"<b>Past Simple</b>. yesterday. Go → went."},
+  {q:"My sister and I ___ students.", opts:["am","is","are","be"], correct:"are", explanation:"To be. we → are."},
   {q:"Множественное число от «mouse»:", opts:["mouses","mices","mice","mouse"], correct:"mice", explanation:"Исключение: mouse → mice."},
-  {q:"This is ___ (я) book.", opts:["I","me","my","mine"], correct:"my", explanation:"Притяжательное перед существительным: I → my."},
-  {q:"The book is ___ (её).", opts:["her","hers","she","herself"], correct:"hers", explanation:"Абсолютная форма: her (перед сущ.), hers (без сущ.)."},
-  {q:"I ___ never ___ to London.", opts:["have / been","has / been","have / be","am / been"], correct:"have / been", explanation:"<b>Present Perfect</b> — опыт. Never. I → have + been."},
-  {q:"They ___ football tomorrow.", opts:["play","played","will play","are play"], correct:"will play", explanation:"<b>Future Simple</b> — будущее. Tomorrow. Will + V."},
-  {q:"He ___ a new car.", opts:["have","has","haves","having"], correct:"has", explanation:"<b>Have в Present Simple</b>. He → has."},
-  {q:"She ___ her homework at 5 pm yesterday.", opts:["did","was doing","is doing","does"], correct:"was doing", explanation:"<b>Past Continuous</b>. At 5 pm yesterday. She → was doing."},
+  {q:"This is ___ (я) book.", opts:["I","me","my","mine"], correct:"my", explanation:"Притяжательное: my."},
+  {q:"The book is ___ (её).", opts:["her","hers","she","herself"], correct:"hers", explanation:"Без существительного: hers."},
+  {q:"I ___ never ___ to London.", opts:["have / been","has / been","have / be","am / been"], correct:"have / been", explanation:"<b>Present Perfect</b>. I → have + been."},
+  {q:"They ___ football tomorrow.", opts:["play","played","will play","are play"], correct:"will play", explanation:"<b>Future Simple</b>. Will + play."},
+  {q:"He ___ a new car.", opts:["have","has","haves","having"], correct:"has", explanation:"Have. He → has."},
+  {q:"She ___ her homework at 5 pm yesterday.", opts:["did","was doing","is doing","does"], correct:"was doing", explanation:"<b>Past Continuous</b>. She → was doing."},
   {q:"Множественное число от «tooth»:", opts:["tooths","teeth","toothes","teeths"], correct:"teeth", explanation:"Исключение: tooth → teeth."},
-  {q:"I am interested ___ music.", opts:["in","on","at","for"], correct:"in", explanation:"Устойчивое: interested in."},
-  {q:"He said he ___ already ___ that film.", opts:["has / seen","had / seen","have / saw","was / seeing"], correct:"had / seen", explanation:"<b>Past Perfect</b> — до другого прошлого. Had + V3. See → seen."},
-  {q:"You ___ sleep more. You look tired.", opts:["can","must","should","may"], correct:"should", explanation:"<b>Should</b> — совет: тебе следует."},
-  {q:"He ___ to school yesterday.", opts:["go","goes","went","gone"], correct:"went", explanation:"<b>Past Simple</b>. Yesterday. Go → went."},
-  {q:"We ___ football every Sunday.", opts:["play","plays","played","are playing"], correct:"play", explanation:"<b>Present Simple</b> — регулярно. Every Sunday. We → play."},
-  {q:"She ___ already ___ her homework.", opts:["have / done","has / done","have / did","is / done"], correct:"has / done", explanation:"<b>Present Perfect</b>. Already. She → has + done."},
-  {q:"Listen! Somebody ___ the piano.", opts:["play","plays","is playing","played"], correct:"is playing", explanation:"<b>Present Continuous</b>. Listen! Somebody → is playing."},
-  {q:"There ___ many books on the table.", opts:["is","are","was","be"], correct:"are", explanation:"There is / there are. Many books → are."},
-  {q:"I ___ this book last year.", opts:["read","reads","am reading","have read"], correct:"read", explanation:"<b>Past Simple</b>. Last year. Read → read."},
-  {q:"He ___ football when it started to rain.", opts:["played","was playing","plays","is playing"], correct:"was playing", explanation:"<b>Past Continuous</b> — длилось. He → was playing."},
-  {q:"___ you ever ___ to Paris?", opts:["Have / been","Has / been","Do / go","Did / go"], correct:"Have / been", explanation:"<b>Present Perfect</b>. Ever. You → Have + been."},
-  {q:"This is ___ book.", opts:["I","me","my","mine"], correct:"my", explanation:"Притяжательное перед существительным: my book."},
-  {q:"The pen is ___ (его).", opts:["he","him","his","himself"], correct:"his", explanation:"His — притяжательное (не меняется)."}
+  {q:"I am interested ___ music.", opts:["in","on","at","for"], correct:"in", explanation:"interested in."},
+  {q:"He said he ___ already ___ that film.", opts:["has / seen","had / seen","have / saw","was / seeing"], correct:"had / seen", explanation:"<b>Past Perfect</b>. Had + seen."},
+  {q:"You ___ sleep more. You look tired.", opts:["can","must","should","may"], correct:"should", explanation:"Should — совет."},
+  {q:"He ___ to school yesterday.", opts:["go","goes","went","gone"], correct:"went", explanation:"<b>Past Simple</b>. went."},
+  {q:"We ___ football every Sunday.", opts:["play","plays","played","are playing"], correct:"play", explanation:"<b>Present Simple</b>. We → play."},
+  {q:"She ___ already ___ her homework.", opts:["have / done","has / done","have / did","is / done"], correct:"has / done", explanation:"<b>Present Perfect</b>. She → has + done."},
+  {q:"Listen! Somebody ___ the piano.", opts:["play","plays","is playing","played"], correct:"is playing", explanation:"<b>Present Continuous</b>. Listen! → is playing."},
+  {q:"There ___ many books on the table.", opts:["is","are","was","be"], correct:"are", explanation:"Many books → are."},
+  {q:"I ___ this book last year.", opts:["read","reads","am reading","have read"], correct:"read", explanation:"<b>Past Simple</b>. read."},
+  {q:"He ___ football when it started to rain.", opts:["played","was playing","plays","is playing"], correct:"was playing", explanation:"<b>Past Continuous</b>. was playing."},
+  {q:"___ you ever ___ to Paris?", opts:["Have / been","Has / been","Do / go","Did / go"], correct:"Have / been", explanation:"<b>Present Perfect</b>. Have + been."},
+  {q:"This is ___ book.", opts:["I","me","my","mine"], correct:"my", explanation:"my book."},
+  {q:"The pen is ___ (его).", opts:["he","him","his","himself"], correct:"his", explanation:"his — притяжательное."}
 ];
 
 let quizQuestions=[];
@@ -908,7 +1215,6 @@ function buildQuiz(){
     const opts=shuffleArray(q.opts);
     const div=document.createElement('div');
     div.className='quiz-q';
-    div.style.animationDelay=(i*0.06)+'s';
     div.dataset.correct=q.correct;
     div.dataset.explanation=q.explanation;
     let optsHtml='';
@@ -937,43 +1243,51 @@ function checkQuiz(){
       result.innerHTML='<b>✅ Верно!</b> '+explanation;
       result.classList.add('ok');
     } else if(selected===null){
-      result.innerHTML='<b>⚠️ Ты не выбрал ответ.</b> Правильно: <u>'+correctAns+'</u>.<br>'+explanation;
+      result.innerHTML='<b>⚠️ Нет ответа.</b> Правильно: <u>'+correctAns+'</u>.<br>'+explanation;
       result.classList.add('no');
     } else {
-      result.innerHTML='<b>❌ Неверно.</b> Ты выбрал: <i>'+selected+'</i>. Правильно: <u>'+correctAns+'</u>.<br>'+explanation;
+      result.innerHTML='<b>❌ Неверно.</b> Правильно: <u>'+correctAns+'</u>.<br>'+explanation;
       result.classList.add('no');
     }
   });
   const score=document.getElementById('score');
   const percent=Math.round(correct/total*100);
   let grade='';
-  if(percent>=90)grade='🏆 Отлично! Ты знаешь английский!';
-  else if(percent>=75)grade='💪 Хорошо! Немного повтори.';
-  else if(percent>=50)grade='📚 Средне. Пройди темы заново.';
-  else grade='⚠️ Слабо. Начни с основ.';
+  if(percent>=90)grade='🏆 Отлично!';
+  else if(percent>=75)grade='💪 Хорошо!';
+  else if(percent>=50)grade='📚 Средне.';
+  else grade='⚠️ Слабо.';
   score.innerHTML='Правильно: <b>'+correct+'</b> из <b>'+total+'</b> ('+percent+'%) — '+grade;
   score.classList.add('show');
-  score.scrollIntoView({behavior:'smooth'});
 }
 function restartQuiz(){
   buildQuiz();
   document.getElementById('score').classList.remove('show');
   document.getElementById('score').textContent='';
-  document.getElementById('quizContainer').scrollIntoView({behavior:'smooth'});
 }
 
-// Запуск
 initTrainer();
 buildQuiz();
 
-// Свайпы
-let tx=0;
-document.addEventListener('touchstart',e=>tx=e.changedTouches[0].screenX);
+// ============ СВАЙПЫ ============
+let tx=0,ty=0,tStart=0;
+document.addEventListener('touchstart',e=>{
+  if(e.target.tagName==='INPUT')return;
+  tx=e.changedTouches[0].screenX;
+  ty=e.changedTouches[0].screenY;
+  tStart=Date.now();
+},{passive:true});
 document.addEventListener('touchend',e=>{
   if(e.target.tagName==='INPUT')return;
-  const d=tx-e.changedTouches[0].screenX;
-  if(Math.abs(d)>50){d>0?next():prev()}
-});
+  const dx=tx-e.changedTouches[0].screenX;
+  const dy=ty-e.changedTouches[0].screenY;
+  const dt=Date.now()-tStart;
+  if(Math.abs(dx)>70 && Math.abs(dx)>Math.abs(dy)*1.5 && dt<600){
+    if(dx>0)next(); else prev();
+  }
+},{passive:true});
+
+show(0);
 </script>
 </body>
 </html>
